@@ -9,5 +9,7 @@ namespace CooperativeEshop.Core.Domain
     {
         public int ID { get; set; }
         public ICollection<UserCommunicationChannel> UserCommunicationChannels { get; }
+
+        public Phone Phone { get; set; }
     }
 }

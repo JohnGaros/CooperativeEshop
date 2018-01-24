@@ -11,9 +11,10 @@ using System;
 namespace CooperativeEshop.Migrations
 {
     [DbContext(typeof(CoopEshopContext))]
-    partial class CoopEshopContextModelSnapshot : ModelSnapshot
+    [Migration("20180124171102_UpdateAddCommChannel")]
+    partial class UpdateAddCommChannel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -97,21 +98,6 @@ namespace CooperativeEshop.Migrations
                     b.HasKey("UserID");
 
                     b.ToTable("Organizations");
-                });
-
-            modelBuilder.Entity("CooperativeEshop.Core.Domain.Phone", b =>
-                {
-                    b.Property<int>("CommChannelID");
-
-                    b.Property<int>("AreaCode");
-
-                    b.Property<int>("CountryCode");
-
-                    b.Property<int>("PhoneNumber");
-
-                    b.HasKey("CommChannelID");
-
-                    b.ToTable("Phones");
                 });
 
             modelBuilder.Entity("CooperativeEshop.Core.Domain.UserCommunicationChannel", b =>
@@ -248,14 +234,6 @@ namespace CooperativeEshop.Migrations
                     b.HasOne("CooperativeEshop.Core.Domain.AppUser", "User")
                         .WithOne("Organization")
                         .HasForeignKey("CooperativeEshop.Core.Domain.Organization", "UserID")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("CooperativeEshop.Core.Domain.Phone", b =>
-                {
-                    b.HasOne("CooperativeEshop.Core.Domain.CommunicationChannel", "CommChannel")
-                        .WithOne("Phone")
-                        .HasForeignKey("CooperativeEshop.Core.Domain.Phone", "CommChannelID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
