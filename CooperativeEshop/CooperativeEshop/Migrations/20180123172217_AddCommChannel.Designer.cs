@@ -11,9 +11,10 @@ using System;
 namespace CooperativeEshop.Migrations
 {
     [DbContext(typeof(CoopEshopContext))]
-    partial class CoopEshopContextModelSnapshot : ModelSnapshot
+    [Migration("20180123172217_AddCommChannel")]
+    partial class AddCommChannel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -79,19 +80,6 @@ namespace CooperativeEshop.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("CommunicationChannels");
-                });
-
-            modelBuilder.Entity("CooperativeEshop.Core.Domain.UserCommunicationChannel", b =>
-                {
-                    b.Property<int>("CommChannelID");
-
-                    b.Property<string>("UserID");
-
-                    b.HasKey("CommChannelID", "UserID");
-
-                    b.HasIndex("UserID");
-
-                    b.ToTable("UserCommunicationChannels");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -200,19 +188,6 @@ namespace CooperativeEshop.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
-                });
-
-            modelBuilder.Entity("CooperativeEshop.Core.Domain.UserCommunicationChannel", b =>
-                {
-                    b.HasOne("CooperativeEshop.Core.Domain.CommunicationChannel", "CommChannel")
-                        .WithMany("UserCommunicationChannels")
-                        .HasForeignKey("CommChannelID")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("CooperativeEshop.Core.Domain.AppUser", "User")
-                        .WithMany("UserCommunicationChannels")
-                        .HasForeignKey("UserID")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

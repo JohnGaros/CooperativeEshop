@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
 
 namespace CooperativeEshop.Core.Domain
 {
-    public class AppUser : IdentityUser
+    public class CommunicationChannel
     {
+        public int ID { get; set; }
         public ICollection<UserCommunicationChannel> UserCommunicationChannels { get; }
     }
 }

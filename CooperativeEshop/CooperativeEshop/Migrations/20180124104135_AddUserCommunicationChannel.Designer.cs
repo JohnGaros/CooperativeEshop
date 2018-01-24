@@ -11,9 +11,10 @@ using System;
 namespace CooperativeEshop.Migrations
 {
     [DbContext(typeof(CoopEshopContext))]
-    partial class CoopEshopContextModelSnapshot : ModelSnapshot
+    [Migration("20180124104135_AddUserCommunicationChannel")]
+    partial class AddUserCommunicationChannel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
