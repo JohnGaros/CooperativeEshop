@@ -11,9 +11,10 @@ using System;
 namespace CooperativeEshop.Migrations
 {
     [DbContext(typeof(CoopEshopContext))]
-    partial class CoopEshopContextModelSnapshot : ModelSnapshot
+    [Migration("20180124164425_AddIndividual")]
+    partial class AddIndividual
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -87,16 +88,7 @@ namespace CooperativeEshop.Migrations
 
                     b.HasKey("UserID");
 
-                    b.ToTable("Individuals");
-                });
-
-            modelBuilder.Entity("CooperativeEshop.Core.Domain.Organization", b =>
-                {
-                    b.Property<string>("UserID");
-
-                    b.HasKey("UserID");
-
-                    b.ToTable("Organizations");
+                    b.ToTable("Individual");
                 });
 
             modelBuilder.Entity("CooperativeEshop.Core.Domain.UserCommunicationChannel", b =>
@@ -225,14 +217,6 @@ namespace CooperativeEshop.Migrations
                     b.HasOne("CooperativeEshop.Core.Domain.AppUser", "User")
                         .WithOne("Individual")
                         .HasForeignKey("CooperativeEshop.Core.Domain.Individual", "UserID")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("CooperativeEshop.Core.Domain.Organization", b =>
-                {
-                    b.HasOne("CooperativeEshop.Core.Domain.AppUser", "User")
-                        .WithOne("Organization")
-                        .HasForeignKey("CooperativeEshop.Core.Domain.Organization", "UserID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

@@ -11,14 +11,10 @@ namespace CooperativeEshop.Core.Domain
     {
         
         
-        public AppUser User { get; set; }
-      
-        //[ForeignKey("User")]
+        public AppUser User { get; set; }       
         public string UserID { get; set; }
         
         public CommunicationChannel CommChannel { get; set; } 
-
-        //[ForeignKey("CommChannel")]
         public int CommChannelID { get; set; }
     }
 }
