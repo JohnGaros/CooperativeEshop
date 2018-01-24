@@ -11,5 +11,6 @@ namespace CooperativeEshop.Core.Domain
         public ICollection<UserCommunicationChannel> UserCommunicationChannels { get; }
 
         public Phone Phone { get; set; }
+        public Email Email { get; set; }
     }
 }
