@@ -18,6 +18,7 @@ namespace CooperativeEshop.Persistence
         public DbSet<Organization> Organizations { get; set; }
         public DbSet<Phone> Phones { get; set; }
         public DbSet<Email> Emails { get; set; }
+        public DbSet<PhysicalAddress> PhysicalAddresses { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -36,6 +37,9 @@ namespace CooperativeEshop.Persistence
 
             builder.Entity<Email>().HasKey(x => x.CommChannelID);
             builder.Entity<Email>().HasOne(x => x.CommChannel).WithOne(x => x.Email).IsRequired();
+
+            builder.Entity<PhysicalAddress>().HasKey(x => x.CommChannelID);
+            builder.Entity<PhysicalAddress>().HasOne(x => x.CommChannel).WithOne(x => x.PhysicalAddress).IsRequired();
 
 
             base.OnModelCreating(builder);
