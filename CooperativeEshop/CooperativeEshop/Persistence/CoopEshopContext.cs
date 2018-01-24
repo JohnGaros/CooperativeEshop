@@ -19,6 +19,7 @@ namespace CooperativeEshop.Persistence
         public DbSet<Phone> Phones { get; set; }
         public DbSet<Email> Emails { get; set; }
         public DbSet<PhysicalAddress> PhysicalAddresses { get; set; }
+        public DbSet<CommunicationChannelType> CommunicationChannelTypes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -40,6 +41,9 @@ namespace CooperativeEshop.Persistence
 
             builder.Entity<PhysicalAddress>().HasKey(x => x.CommChannelID);
             builder.Entity<PhysicalAddress>().HasOne(x => x.CommChannel).WithOne(x => x.PhysicalAddress).IsRequired();
+
+            builder.Entity<CommunicationChannelType>().HasKey(x => x.ID);
+            builder.Entity<CommunicationChannel>().HasOne(x => x.Type).WithMany(x => x.CommChannels).IsRequired();
 
 
             base.OnModelCreating(builder);

@@ -13,5 +13,8 @@ namespace CooperativeEshop.Core.Domain
         public Phone Phone { get; set; }
         public Email Email { get; set; }
         public PhysicalAddress PhysicalAddress { get; set; }
+
+        public CommunicationChannelType Type { get; set; }
+        public int TypeID { get; set; }
     }
 }
