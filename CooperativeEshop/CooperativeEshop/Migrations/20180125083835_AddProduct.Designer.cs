@@ -11,9 +11,10 @@ using System;
 namespace CooperativeEshop.Migrations
 {
     [DbContext(typeof(CoopEshopContext))]
-    partial class CoopEshopContextModelSnapshot : ModelSnapshot
+    [Migration("20180125083835_AddProduct")]
+    partial class AddProduct
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -158,18 +159,6 @@ namespace CooperativeEshop.Migrations
                     b.HasKey("CommChannelID");
 
                     b.ToTable("PhysicalAddresses");
-                });
-
-            modelBuilder.Entity("CooperativeEshop.Core.Domain.Product", b =>
-                {
-                    b.Property<int>("ProductID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Name");
-
-                    b.HasKey("ProductID");
-
-                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("CooperativeEshop.Core.Domain.UserCommunicationChannel", b =>

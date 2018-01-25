@@ -20,6 +20,7 @@ namespace CooperativeEshop.Persistence
         public DbSet<Email> Emails { get; set; }
         public DbSet<PhysicalAddress> PhysicalAddresses { get; set; }
         public DbSet<CommunicationChannelType> CommunicationChannelTypes { get; set; }
+        public DbSet<Product> Products { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
