@@ -11,9 +11,10 @@ using System;
 namespace CooperativeEshop.Migrations
 {
     [DbContext(typeof(CoopEshopContext))]
-    partial class CoopEshopContextModelSnapshot : ModelSnapshot
+    [Migration("20180125090833_AddSupplier_FixCommChannRelationships")]
+    partial class AddSupplier_FixCommChannRelationships
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -170,31 +171,6 @@ namespace CooperativeEshop.Migrations
                     b.HasKey("ProductID");
 
                     b.ToTable("Products");
-                });
-
-            modelBuilder.Entity("CooperativeEshop.Core.Domain.ProductCategory", b =>
-                {
-                    b.Property<int>("ProductCategoryID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Name");
-
-                    b.HasKey("ProductCategoryID");
-
-                    b.ToTable("ProductCategories");
-                });
-
-            modelBuilder.Entity("CooperativeEshop.Core.Domain.ProductCategoryClassification", b =>
-                {
-                    b.Property<int>("CategoryID");
-
-                    b.Property<int>("ProductID");
-
-                    b.HasKey("CategoryID", "ProductID");
-
-                    b.HasIndex("ProductID");
-
-                    b.ToTable("ProductCategoryClassifications");
                 });
 
             modelBuilder.Entity("CooperativeEshop.Core.Domain.SupplierProduct", b =>
@@ -378,19 +354,6 @@ namespace CooperativeEshop.Migrations
                     b.HasOne("CooperativeEshop.Core.Domain.CommunicationChannel", "CommChannel")
                         .WithOne("PhysicalAddress")
                         .HasForeignKey("CooperativeEshop.Core.Domain.PhysicalAddress", "CommChannelID")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("CooperativeEshop.Core.Domain.ProductCategoryClassification", b =>
-                {
-                    b.HasOne("CooperativeEshop.Core.Domain.ProductCategory", "Category")
-                        .WithMany("ProductCategoryClassifications")
-                        .HasForeignKey("CategoryID")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("CooperativeEshop.Core.Domain.Product", "Product")
-                        .WithMany("ProductCategoryClassifications")
-                        .HasForeignKey("ProductID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

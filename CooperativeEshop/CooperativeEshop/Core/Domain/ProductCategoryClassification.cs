@@ -5,14 +5,12 @@ using System.Threading.Tasks;
 
 namespace CooperativeEshop.Core.Domain
 {
-    public class SupplierProduct
+    public class ProductCategoryClassification
     {
         public Product Product { get; set; }
         public int ProductID { get; set; }
 
-        public AppUser Seller { get; set; }
-        public string UserID { get; set; }
-
-        public int StockQuantity { get; set; }
+        public ProductCategory Category { get; set; }
+        public int CategoryID { get; set; }
     }
 }
