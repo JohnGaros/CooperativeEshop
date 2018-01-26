@@ -11,8 +11,8 @@ using System;
 namespace CooperativeEshop.Migrations
 {
     [DbContext(typeof(CoopEshopContext))]
-    [Migration("20180126165010_AddWishList")]
-    partial class AddWishList
+    [Migration("20180126191930_AddOrder")]
+    partial class AddOrder
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -118,6 +118,8 @@ namespace CooperativeEshop.Migrations
 
                     b.Property<decimal>("UnitPrice");
 
+                    b.Property<bool>("WishListed");
+
                     b.HasKey("CartItemID");
 
                     b.HasIndex("CartID");
@@ -177,6 +179,22 @@ namespace CooperativeEshop.Migrations
                     b.HasKey("UserID");
 
                     b.ToTable("Individuals");
+                });
+
+            modelBuilder.Entity("CooperativeEshop.Core.Domain.Order", b =>
+                {
+                    b.Property<int>("OrderID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("CartID");
+
+                    b.Property<DateTime>("OrderDate");
+
+                    b.HasKey("OrderID");
+
+                    b.HasIndex("CartID");
+
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("CooperativeEshop.Core.Domain.Organization", b =>
@@ -307,22 +325,6 @@ namespace CooperativeEshop.Migrations
                     b.HasIndex("UserID");
 
                     b.ToTable("UserCommunicationChannels");
-                });
-
-            modelBuilder.Entity("CooperativeEshop.Core.Domain.WishList", b =>
-                {
-                    b.Property<int>("WishListID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("CustomerID")
-                        .IsRequired();
-
-                    b.HasKey("WishListID");
-
-                    b.HasIndex("CustomerID")
-                        .IsUnique();
-
-                    b.ToTable("WishLists");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -457,7 +459,7 @@ namespace CooperativeEshop.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("CooperativeEshop.Core.Domain.Product", "Product")
-                        .WithMany()
+                        .WithMany("CartItems")
                         .HasForeignKey("ProductID")
                         .OnDelete(DeleteBehavior.Cascade);
 
@@ -487,6 +489,14 @@ namespace CooperativeEshop.Migrations
                     b.HasOne("CooperativeEshop.Core.Domain.AppUser", "User")
                         .WithOne("Individual")
                         .HasForeignKey("CooperativeEshop.Core.Domain.Individual", "UserID")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("CooperativeEshop.Core.Domain.Order", b =>
+                {
+                    b.HasOne("CooperativeEshop.Core.Domain.Cart", "Cart")
+                        .WithMany("Orders")
+                        .HasForeignKey("CartID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -558,14 +568,6 @@ namespace CooperativeEshop.Migrations
                     b.HasOne("CooperativeEshop.Core.Domain.AppUser", "User")
                         .WithMany("UserCommunicationChannels")
                         .HasForeignKey("UserID")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("CooperativeEshop.Core.Domain.WishList", b =>
-                {
-                    b.HasOne("CooperativeEshop.Core.Domain.AppUser", "Customer")
-                        .WithOne("WishList")
-                        .HasForeignKey("CooperativeEshop.Core.Domain.WishList", "CustomerID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

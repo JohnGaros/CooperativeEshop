@@ -20,6 +20,7 @@ namespace CooperativeEshop.Core.Domain
 
         public int QuantityInCart { get; set; }
         public decimal UnitPrice { get; set; }
+        public bool WishListed { get; set; }
 
         public DateTime DateAdded { get; set; }
         public DateTime? DateRemoved { get; set; }

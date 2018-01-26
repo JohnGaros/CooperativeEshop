@@ -13,5 +13,6 @@ namespace CooperativeEshop.Core.Domain
         public string CustomerID { get; set; }
 
         public ICollection<CartItem> CartItems { get; set; }
+        public ICollection<Order> Orders { get; set; }
     }
 }

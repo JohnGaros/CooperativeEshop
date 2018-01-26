@@ -63,6 +63,12 @@
     <Compile Remove="Migrations\20180126180456_WishListRemoval.Designer.cs" />
     <Compile Remove="Migrations\20180126180556_WishListRemoval.cs" />
     <Compile Remove="Migrations\20180126180556_WishListRemoval.Designer.cs" />
+    <Compile Remove="Migrations\20180126190551_AddOrder.cs" />
+    <Compile Remove="Migrations\20180126190551_AddOrder.Designer.cs" />
+    <Compile Remove="Migrations\20180126190943_AddOrder.cs" />
+    <Compile Remove="Migrations\20180126190943_AddOrder.Designer.cs" />
+    <Compile Remove="Migrations\20180126191155_AddOrder.cs" />
+    <Compile Remove="Migrations\20180126191155_AddOrder.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
