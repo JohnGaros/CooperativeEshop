@@ -24,6 +24,8 @@ namespace CooperativeEshop.Persistence
         public DbSet<ProductCategory> ProductCategories { get; set; }
         public DbSet<ProductCategoryClassification> ProductCategoryClassifications { get; set; }
         public DbSet<PriceComponent> PriceComponents { get; set; }
+        public DbSet<BasePriceComponent> BasePriceComponents { get; set; }
+        public DbSet<SurchargePriceComponent> SurchargePriceComponents { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -56,7 +58,13 @@ namespace CooperativeEshop.Persistence
             builder.Entity<PriceComponent>().HasKey(x => x.PriceComponentID);
             builder.Entity<PriceComponent>().HasOne(x => x.Seller).WithMany(x => x.SellerPrices).IsRequired();
             builder.Entity<PriceComponent>().HasOne(x => x.Product).WithMany(x => x.SellerProduct).IsRequired();
-           
+
+            builder.Entity<BasePriceComponent>().HasKey(x => x.PriceComponentID);
+            builder.Entity<BasePriceComponent>().HasOne(x => x.PriceComponent).WithOne(x => x.BasePrice).IsRequired();
+
+            builder.Entity<SurchargePriceComponent>().HasKey(x => x.PriceComponentID);
+            builder.Entity<SurchargePriceComponent>().HasOne(x => x.PriceComponent).WithOne(x => x.Surcharge).IsRequired();
+
             base.OnModelCreating(builder);
         }
     }

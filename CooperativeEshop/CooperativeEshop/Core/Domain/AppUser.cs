@@ -9,6 +9,7 @@ namespace CooperativeEshop.Core.Domain
 {
     public class AppUser : IdentityUser
     {
+        
         public Individual Individual { get; set; }
         public Organization Organization { get; set; }
 

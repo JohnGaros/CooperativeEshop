@@ -11,9 +11,10 @@ using System;
 namespace CooperativeEshop.Migrations
 {
     [DbContext(typeof(CoopEshopContext))]
-    partial class CoopEshopContextModelSnapshot : ModelSnapshot
+    [Migration("20180126103549_AddBasePriceComponents")]
+    partial class AddBasePriceComponents
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -238,17 +239,6 @@ namespace CooperativeEshop.Migrations
                     b.ToTable("ProductCategoryClassifications");
                 });
 
-            modelBuilder.Entity("CooperativeEshop.Core.Domain.SurchargePriceComponent", b =>
-                {
-                    b.Property<int>("PriceComponentID");
-
-                    b.Property<decimal>("Surcharge");
-
-                    b.HasKey("PriceComponentID");
-
-                    b.ToTable("SurchargePriceComponents");
-                });
-
             modelBuilder.Entity("CooperativeEshop.Core.Domain.UserCommunicationChannel", b =>
                 {
                     b.Property<int>("CommChannelID");
@@ -449,14 +439,6 @@ namespace CooperativeEshop.Migrations
                     b.HasOne("CooperativeEshop.Core.Domain.Product", "Product")
                         .WithMany("ProductCategoryClassifications")
                         .HasForeignKey("ProductID")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("CooperativeEshop.Core.Domain.SurchargePriceComponent", b =>
-                {
-                    b.HasOne("CooperativeEshop.Core.Domain.PriceComponent", "PriceComponent")
-                        .WithOne("Surcharge")
-                        .HasForeignKey("CooperativeEshop.Core.Domain.SurchargePriceComponent", "PriceComponentID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
