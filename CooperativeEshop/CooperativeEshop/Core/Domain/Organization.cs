@@ -5,8 +5,9 @@ using System.Threading.Tasks;
 
 namespace CooperativeEshop.Core.Domain
 {
-    public class Organization
+    public class Organization 
     {
+        public string OrganizationName { get; set; }
         public AppUser User { get; set; }
         public string UserID { get; set; }
     }

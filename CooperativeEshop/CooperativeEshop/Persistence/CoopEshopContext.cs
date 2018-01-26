@@ -21,9 +21,9 @@ namespace CooperativeEshop.Persistence
         public DbSet<PhysicalAddress> PhysicalAddresses { get; set; }
         public DbSet<CommunicationChannelType> CommunicationChannelTypes { get; set; }
         public DbSet<Product> Products { get; set; }
-        public DbSet<SupplierProduct> SupplierProducts { get; set; }
         public DbSet<ProductCategory> ProductCategories { get; set; }
         public DbSet<ProductCategoryClassification> ProductCategoryClassifications { get; set; }
+        public DbSet<PriceComponent> PriceComponents { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -49,14 +49,14 @@ namespace CooperativeEshop.Persistence
             builder.Entity<CommunicationChannelType>().HasKey(x => x.ID);
             builder.Entity<CommunicationChannel>().HasOne(x => x.Type).WithMany(x => x.CommChannels).IsRequired();
 
-            builder.Entity<SupplierProduct>().HasKey(x => new { x.ProductID, x.UserID });
-            builder.Entity<SupplierProduct>().HasOne(x => x.Seller).WithMany(x => x.SupplierProduct).HasForeignKey(x => x.UserID).IsRequired();
-
             builder.Entity<ProductCategoryClassification>().HasKey(x => new { x.CategoryID, x.ProductID });
             builder.Entity<ProductCategoryClassification>().HasOne(x => x.Product).WithMany(x => x.ProductCategoryClassifications).IsRequired().HasForeignKey(x => x.ProductID).IsRequired();
             builder.Entity<ProductCategoryClassification>().HasOne(x => x.Category).WithMany(x => x.ProductCategoryClassifications).IsRequired().HasForeignKey(x => x.CategoryID).IsRequired();
-            
 
+            builder.Entity<PriceComponent>().HasKey(x => x.PriceComponentID);
+            builder.Entity<PriceComponent>().HasOne(x => x.Seller).WithMany(x => x.SellerPrices).IsRequired();
+            builder.Entity<PriceComponent>().HasOne(x => x.Product).WithMany(x => x.SellerProduct).IsRequired();
+           
             base.OnModelCreating(builder);
         }
     }

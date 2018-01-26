@@ -10,7 +10,7 @@ namespace CooperativeEshop.Core.Domain
         public int ProductID { get; set; }
         public string Name { get; set; }
 
-        public ICollection<SupplierProduct> SupplierProduct { get; }
+        public ICollection<PriceComponent> SellerProduct { get; set; }
         public ICollection<ProductCategoryClassification> ProductCategoryClassifications { get; set; }
     }
 }
