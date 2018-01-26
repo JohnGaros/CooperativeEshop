@@ -45,6 +45,8 @@
     <Compile Remove="Migrations\20180125174951_AddBasePriceUpdate21.Designer.cs" />
     <Compile Remove="Migrations\20180126100205_AddPriceComponentRemoveSellerProduct.cs" />
     <Compile Remove="Migrations\20180126100205_AddPriceComponentRemoveSellerProduct.Designer.cs" />
+    <Compile Remove="Migrations\20180126163530_AddCartItems.cs" />
+    <Compile Remove="Migrations\20180126163530_AddCartItems.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -11,5 +11,7 @@ namespace CooperativeEshop.Core.Domain
 
         public AppUser Customer { get; set; }
         public string CustomerID { get; set; }
+
+        public ICollection<CartItem> CartItems { get; set; }
     }
 }
