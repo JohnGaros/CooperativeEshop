@@ -28,6 +28,7 @@ namespace CooperativeEshop.Persistence
         public DbSet<SurchargePriceComponent> SurchargePriceComponents { get; set; }
         public DbSet<Cart> Carts { get; set; }
         public DbSet<CartItem> CartItems { get; set; }
+        public DbSet<WishList> WishLists { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -72,6 +73,9 @@ namespace CooperativeEshop.Persistence
 
             builder.Entity<CartItem>().HasKey(x => x.CartItemID);
             builder.Entity<CartItem>().HasOne(x => x.Cart).WithMany(x => x.CartItems).IsRequired();
+
+            builder.Entity<WishList>().HasKey(x => x.WishListID);
+            builder.Entity<WishList>().HasOne(x => x.Customer).WithOne(x => x.WishList).IsRequired();
 
             base.OnModelCreating(builder);
         }

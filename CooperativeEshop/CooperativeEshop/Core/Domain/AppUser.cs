@@ -14,6 +14,7 @@ namespace CooperativeEshop.Core.Domain
         public Organization Organization { get; set; }
         
         public Cart Cart { get; set; }
+        public WishList WishList { get; set; }
 
         public ICollection<UserCommunicationChannel> UserCommunicationChannels { get; set; }
         
