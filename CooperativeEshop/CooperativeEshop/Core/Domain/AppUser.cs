@@ -12,6 +12,8 @@ namespace CooperativeEshop.Core.Domain
         
         public Individual Individual { get; set; }
         public Organization Organization { get; set; }
+        
+        public Cart Cart { get; set; }
 
         public ICollection<UserCommunicationChannel> UserCommunicationChannels { get; set; }
         
