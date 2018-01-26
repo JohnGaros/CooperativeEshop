@@ -47,6 +47,22 @@
     <Compile Remove="Migrations\20180126100205_AddPriceComponentRemoveSellerProduct.Designer.cs" />
     <Compile Remove="Migrations\20180126163530_AddCartItems.cs" />
     <Compile Remove="Migrations\20180126163530_AddCartItems.Designer.cs" />
+    <Compile Remove="Migrations\20180126173237_AddWishListItems.cs" />
+    <Compile Remove="Migrations\20180126173237_AddWishListItems.Designer.cs" />
+    <Compile Remove="Migrations\20180126173907_AddWishListItems.cs" />
+    <Compile Remove="Migrations\20180126173907_AddWishListItems.Designer.cs" />
+    <Compile Remove="Migrations\20180126174421_AddWishListItems.cs" />
+    <Compile Remove="Migrations\20180126174421_AddWishListItems.Designer.cs" />
+    <Compile Remove="Migrations\20180126174832_AddWishListItems.cs" />
+    <Compile Remove="Migrations\20180126174832_AddWishListItems.Designer.cs" />
+    <Compile Remove="Migrations\20180126180125_WishListRemoval.cs" />
+    <Compile Remove="Migrations\20180126180125_WishListRemoval.Designer.cs" />
+    <Compile Remove="Migrations\20180126180209_WishListRemoval.cs" />
+    <Compile Remove="Migrations\20180126180209_WishListRemoval.Designer.cs" />
+    <Compile Remove="Migrations\20180126180456_WishListRemoval.cs" />
+    <Compile Remove="Migrations\20180126180456_WishListRemoval.Designer.cs" />
+    <Compile Remove="Migrations\20180126180556_WishListRemoval.cs" />
+    <Compile Remove="Migrations\20180126180556_WishListRemoval.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

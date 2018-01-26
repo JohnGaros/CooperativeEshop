@@ -23,5 +23,6 @@ namespace CooperativeEshop.Core.Domain
 
         public DateTime DateAdded { get; set; }
         public DateTime? DateRemoved { get; set; }
+
     }
 }

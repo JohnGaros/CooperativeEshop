@@ -12,5 +12,8 @@ namespace CooperativeEshop.Core.Domain
 
         public ICollection<PriceComponent> SellerProduct { get; set; }
         public ICollection<ProductCategoryClassification> ProductCategoryClassifications { get; set; }
+
+        public ICollection<CartItem> CartItems { get; set; }
+        
     }
 }
