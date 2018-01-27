@@ -29,7 +29,7 @@ namespace CooperativeEshop.Persistence
         public DbSet<Cart> Carts { get; set; }
         public DbSet<CartItem> CartItems { get; set; }
         public DbSet<Order> Orders { get; set; }
-        public DbSet<BankAccount> BankAccounts { get; set; }
+        
         
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -79,9 +79,6 @@ namespace CooperativeEshop.Persistence
 
             builder.Entity<Order>().HasKey(x => x.OrderID);
             builder.Entity<Order>().HasOne(x => x.Cart).WithMany(x => x.Orders).IsRequired();
-
-            builder.Entity<BankAccount>().HasKey(x => x.BankAccountID);
-            builder.Entity<BankAccount>().HasOne(x => x.User).WithMany(x => x.BankAccounts).IsRequired();
 
             base.OnModelCreating(builder);
         }

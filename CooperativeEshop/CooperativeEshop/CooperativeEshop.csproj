@@ -69,10 +69,17 @@
     <Compile Remove="Migrations\20180126190943_AddOrder.Designer.cs" />
     <Compile Remove="Migrations\20180126191155_AddOrder.cs" />
     <Compile Remove="Migrations\20180126191155_AddOrder.Designer.cs" />
+    <Compile Remove="Migrations\20180126192757_AddBankAccount.cs" />
+    <Compile Remove="Migrations\20180126192757_AddBankAccount.Designer.cs" />
+    <Compile Remove="Migrations\20180126193756_AddBankTransaction.cs" />
+    <Compile Remove="Migrations\20180126193756_AddBankTransaction.Designer.cs" />
+    <Compile Remove="Migrations\20180126195214_RemoveBankAccount_AddAccountBalance.cs" />
+    <Compile Remove="Migrations\20180126195214_RemoveBankAccount_AddAccountBalance.Designer.cs" />
+    <Compile Remove="Migrations\20180126195941_RemoveBankAccount_AddAccountBalance.cs" />
+    <Compile Remove="Migrations\20180126195941_RemoveBankAccount_AddAccountBalance.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
     <Folder Include="Models\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
@@ -81,6 +88,7 @@
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.2" />
     <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0" />
   </ItemGroup>
 

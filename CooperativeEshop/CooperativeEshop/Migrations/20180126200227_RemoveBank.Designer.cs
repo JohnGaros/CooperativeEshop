@@ -11,8 +11,8 @@ using System;
 namespace CooperativeEshop.Migrations
 {
     [DbContext(typeof(CoopEshopContext))]
-    [Migration("20180126192757_AddBankAccount")]
-    partial class AddBankAccount
+    [Migration("20180126200227_RemoveBank")]
+    partial class RemoveBank
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -27,6 +27,8 @@ namespace CooperativeEshop.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("AccessFailedCount");
+
+                    b.Property<decimal>("AccountBalance");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
@@ -70,23 +72,6 @@ namespace CooperativeEshop.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
-                });
-
-            modelBuilder.Entity("CooperativeEshop.Core.Domain.BankAccount", b =>
-                {
-                    b.Property<int>("BankAccountID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<decimal>("AccountBalance");
-
-                    b.Property<string>("UserID")
-                        .IsRequired();
-
-                    b.HasKey("BankAccountID");
-
-                    b.HasIndex("UserID");
-
-                    b.ToTable("BankAccounts");
                 });
 
             modelBuilder.Entity("CooperativeEshop.Core.Domain.BasePriceComponent", b =>
@@ -450,14 +435,6 @@ namespace CooperativeEshop.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
-                });
-
-            modelBuilder.Entity("CooperativeEshop.Core.Domain.BankAccount", b =>
-                {
-                    b.HasOne("CooperativeEshop.Core.Domain.AppUser", "User")
-                        .WithMany("BankAccounts")
-                        .HasForeignKey("UserID")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("CooperativeEshop.Core.Domain.BasePriceComponent", b =>

@@ -9,7 +9,8 @@ namespace CooperativeEshop.Core.Domain
 {
     public class AppUser : IdentityUser
     {
-        
+        public decimal AccountBalance { get; set; }
+
         public Individual Individual { get; set; }
         public Organization Organization { get; set; }
         
@@ -17,6 +18,6 @@ namespace CooperativeEshop.Core.Domain
         
         public ICollection<UserCommunicationChannel> UserCommunicationChannels { get; set; }
         public ICollection<PriceComponent> SellerPrices { get; set; }
-        public ICollection<BankAccount> BankAccounts { get; set; }
+        
     }
 }
