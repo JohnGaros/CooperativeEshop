@@ -7,45 +7,31 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button class="navbar-toggler" aria-expanded="false" aria-controls="navbarColor01" aria-label="Toggle navigation" type="button" data-toggle="collapse" data-target="#navbarColor01">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
         <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="~/Home/Index">Home</a>
+                    <a class="navbar-brand" asp-controller="Home" asp-action="Index">Home</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" role="button" aria-expanded="false" aria-haspopup="true" href="#" data-toggle="dropdown">Books</a>
-                    <div class="dropdown-menu" style="left: 0px; top: 0px; position: absolute; transform: translate3d(0px, 38px, 0px);" x-placement="bottom-start">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Separated link</a>
-                    </div>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
+                
+                <li class="nav-item ml-5">
+                    <a class="nav-link" href="#">Buy Books</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
+                    <a class="nav-link" href="#">Sell Books</a>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <a href="Account/Register" class="btn btn-link text-white my-2 my-sm-0 mr-2">Register</a>
-                <a href="Account/SignIn" class="btn btn-link text-white my-2 my-sm-0">Sign In</a>
-            </form>
+            <div class="navbar-nav mr-0">
+                <a class="nav-item nav-link my-2 my-sm-0 mr-2" asp-controller="Administration" asp-action="Admin">Partners</a>
+                <a class="nav-item nav-link my-2 my-sm-0 mr-2" asp-controller="Account" asp-action="Register">Register</a>
+                <a class="nav-item nav-link my-2 my-sm-0" asp-controller="Account" asp-action="SignIn">Sign In</a>
+            </div>
         </div>
     </nav>
     <div>
         @RenderBody()
     </div>
+    
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/tether/dist/js/tether.min.js"></script>
     <script src="~/lib/bootstrap/js/dist/dropdown.js"></script>
 </body>
 </html>

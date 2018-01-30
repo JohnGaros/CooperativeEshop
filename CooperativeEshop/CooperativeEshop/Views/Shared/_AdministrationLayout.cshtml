@@ -1,0 +1,26 @@
+﻿<!Doctype html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width initial-scale=1, shrink-to-fit=no" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <title>CoopEshop</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      
+        <a class="navbar-brand navbar-nav mr-auto" asp-controller="Home" asp-action="Index">Home</a>
+        
+            <div class="navbar-nav mr-0">
+                
+                <a class="nav-item nav-link my-2 my-sm-0" asp-controller="Account" asp-action="SignIn">Sign Out</a>
+            </div>        
+    </nav>
+    <div>
+        @RenderBody()
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/tether/dist/js/tether.min.js"></script>
+    <script src="~/lib/bootstrap/js/dist/dropdown.js"></script>
+</body>
+</html>
+
