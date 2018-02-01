@@ -12,6 +12,7 @@ namespace CooperativeEshop.Persistence
     {
         public CoopEshopContext(DbContextOptions<CoopEshopContext> options) : base(options){}
 
+        public DbSet<AppUser> AppUsers { get; set; }
         public DbSet<CommunicationChannel> CommunicationChannels { get; set; }
         public DbSet<UserCommunicationChannel> UserCommunicationChannels { get; set; }
         public DbSet<Individual> Individuals { get; set; }
@@ -34,6 +35,8 @@ namespace CooperativeEshop.Persistence
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.Entity<AppUser>().HasKey(k => k.Id);
+
             builder.Entity<UserCommunicationChannel>().HasKey(k => new { k.CommChannelID, k.UserID });
             builder.Entity<UserCommunicationChannel>().HasOne(x => x.User).WithMany(x => x.UserCommunicationChannels).HasForeignKey(x => x.UserID).IsRequired();
             builder.Entity<UserCommunicationChannel>().HasOne(x => x.CommChannel).WithMany(x => x.UserCommunicationChannels).HasForeignKey(x => x.CommChannelID).IsRequired();

@@ -5,34 +5,47 @@
                 <div class="row">
                     <div class="col"></div>
                     <div class="col-9 px-0">
-                        <h1 class="display-4">The Cooperative Bookstore!</h1>
+                        <h1 class="display-4 text-center">The Cooperative Bookstore!</h1>
                         <p class="lead"></p>
-                        <hr class="my-4">
-                        <blockquote class="blockquote text-right">
+                        @*<hr class="my-4">*@
+                        <blockquote class="blockquote text-center">
                             <p class="mb-0"><em>The more one reads the more one sees</em></p>
                             <footer class="blockquote-footer">John Adams in <cite title="Source Title"> letter to Abigail Adams </cite></footer>
                         </blockquote>
-                        <p class="lead">
+                        @*<p class="lead">
                             <a class="btn btn-success btn-lg" href="#" role="button">View Our Books Collection</a>
-                        </p>
+                        </p>*@
                     </div>
                     <div class="col"></div>
                 </div>
-            </div>
-            
-        
-        
+            </div>        
     </div>
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col"></div>
-        <div class="col-5">
-            @Html.Partial("ProductCard")
+        <div class="col-2"></div>
+        <div class="col-4">
+            <div class="card border-success mb-3" style="max-width: 25rem;">
+                @*<div class="card-header">Buy rare and hard to find books</div>*@
+                <div class="card-body text-success">
+                    <h4 class="card-title">Buy rare and hard to find books!</h4>
+                    <form asp-controller="Home" asp-action="Products">
+                        <button type="button" class="btn btn-success btn-lg btn-block">View our Book Collection</button>
+                    </form>
+                    
+                </div>
+            </div>
         </div>
-        <div class="col-5">
-            @Html.Partial("ProductCard")
+        <div class="col-4">
+            <div class="card border-warning mb-3" style="max-width: 25rem;">
+                @*<div class="card-header">Buy rare and hard to find books</div>*@
+                <div class="card-body text-warning">
+                    <h4 class="card-title">Sell your books with us!</h4>
+                    <button type="button" class="btn btn-warning btn-lg btn-block">Sell your Books</button>
+                </div>
+            </div>
         </div>
-        <div class="col"></div>
+        <div class="col-2"></div>
     </div>
+    
 </div>

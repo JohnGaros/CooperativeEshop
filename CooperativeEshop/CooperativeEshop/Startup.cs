@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using CooperativeEshop.Persistence;
+using CooperativeEshop.Persistence.Repositories;
 using CooperativeEshop.Core.Domain;
+using CooperativeEshop.Core.Repositories;
+using CooperativeEshop.Persistence;
+
 
 namespace CooperativeEshop
 {
@@ -29,11 +26,12 @@ namespace CooperativeEshop
             services.AddIdentity<AppUser, IdentityRole>()
                 .AddEntityFrameworkStores<CoopEshopContext>()
                 .AddDefaultTokenProviders();
+            services.AddTransient<IUserRepository, UserRepository>();
             services.AddMvc();
         }
 
         
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app)
         {
             
             app.UseStatusCodePages();
@@ -46,6 +44,8 @@ namespace CooperativeEshop
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+            //AdminSeedData.EnsurePopulated(app);
         }
+        
     }
 }

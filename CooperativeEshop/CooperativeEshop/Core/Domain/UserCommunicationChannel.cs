@@ -10,7 +10,6 @@ namespace CooperativeEshop.Core.Domain
     public class UserCommunicationChannel
     {
         
-        
         public AppUser User { get; set; }       
         public string UserID { get; set; }
         
