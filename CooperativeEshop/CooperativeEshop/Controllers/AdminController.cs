@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using CooperativeEshop.Core.Domain;
 using CooperativeEshop.Core.Repositories;
 using CooperativeEshop.Models.ViewModels;
-using CooperativeEshop.Persistence.Repositories;
+
 using System.Threading.Tasks;
 
 namespace CooperativeEshop.Controllers
@@ -12,6 +12,7 @@ namespace CooperativeEshop.Controllers
     {
         private IUserRepository _userRepository;
         private UserManager<AppUser> _userManager;
+       
 
         public AdminController(IUserRepository userRepository, UserManager<AppUser> userManager)
         {

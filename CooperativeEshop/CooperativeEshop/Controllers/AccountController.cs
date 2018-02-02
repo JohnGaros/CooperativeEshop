@@ -33,8 +33,23 @@ namespace CooperativeEshop.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public IActionResult Login(LoginUserViewModel details, string returnUrl)
+        public async Task<IActionResult> Login(LoginUserViewModel details, string returnUrl)
         {
+            if (ModelState.IsValid)
+            {
+                AppUser user = await _userManager.FindByEmailAsync(details.Email);
+                if(user != null)
+                {
+                    await _signInManager.SignOutAsync();
+                    Microsoft.AspNetCore.Identity.SignInResult result = await _signInManager
+                        .PasswordSignInAsync(user, details.Password, false, false);
+                    if (result.Succeeded)
+                    {
+                        return Redirect(returnUrl ?? "/");
+                    }
+                }
+                ModelState.AddModelError(nameof(LoginUserViewModel.Email), "Invalid email or password");
+            }
             return View(details);
         }
         
@@ -75,6 +90,7 @@ namespace CooperativeEshop.Controllers
             return View(newUser);
             
         }
+
 
     }
 }
