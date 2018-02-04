@@ -24,9 +24,9 @@ namespace CooperativeEshop.Controllers
                 
         }
 
-        public IActionResult AddProduct(string name)
-        {
+        //public IActionResult AddProduct(string name)
+        //{
             
-        }
+        //}
     }
 }

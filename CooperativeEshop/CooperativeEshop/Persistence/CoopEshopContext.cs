@@ -11,8 +11,7 @@ namespace CooperativeEshop.Persistence
     public class CoopEshopContext : IdentityDbContext<AppUser>
     {
         public CoopEshopContext(DbContextOptions<CoopEshopContext> options) : base(options){}
-
-        public DbSet<AppUser> AppUsers { get; set; }
+       
         public DbSet<CommunicationChannel> CommunicationChannels { get; set; }
         public DbSet<UserCommunicationChannel> UserCommunicationChannels { get; set; }
         public DbSet<Individual> Individuals { get; set; }
@@ -30,12 +29,12 @@ namespace CooperativeEshop.Persistence
         public DbSet<Cart> Carts { get; set; }
         public DbSet<CartItem> CartItems { get; set; }
         public DbSet<Order> Orders { get; set; }
-        
+        public DbSet<InventoryItem> InventoryItems { get; set; }
         
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<AppUser>().HasKey(k => k.Id);
+            
 
             builder.Entity<UserCommunicationChannel>().HasKey(k => new { k.CommChannelID, k.UserID });
             builder.Entity<UserCommunicationChannel>().HasOne(x => x.User).WithMany(x => x.UserCommunicationChannels).HasForeignKey(x => x.UserID).IsRequired();
@@ -82,6 +81,10 @@ namespace CooperativeEshop.Persistence
 
             builder.Entity<Order>().HasKey(x => x.OrderID);
             builder.Entity<Order>().HasOne(x => x.Cart).WithMany(x => x.Orders).IsRequired();
+
+            builder.Entity<InventoryItem>().HasKey(x => x.IneventoryItemID);
+            builder.Entity<InventoryItem>().HasOne(x => x.Seller).WithMany(x => x.InventoryItems).IsRequired();
+            builder.Entity<InventoryItem>().HasOne(x => x.Product).WithMany(x => x.InventoryItems).IsRequired();
 
             base.OnModelCreating(builder);
         }
