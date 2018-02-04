@@ -6,11 +6,36 @@ using CooperativeEshop.Core.Domain;
 
 namespace CooperativeEshop.Persistence.Repositories
 {
-    public class ProductRepository : Repository<Product>
+    public class ProductRepository : IProductRepository
     {
-        public ProductRepository(CoopEshopContext ctx) : base(ctx)
+        public CoopEshopContext ctx;
+
+        public ProductRepository(CoopEshopContext context)
         {
-                
+            ctx = context;
+        }
+
+        public IQueryable<Product> Products => ctx.Products;
+
+        public void UpdateProduct(Product product)
+        {
+            ctx.Update(product);
+            ctx.SaveChanges();
+        }
+        public void AddProduct (Product product)
+        {
+            ctx.Products.Add(product);
+            ctx.SaveChanges();
+        }
+        public void DeleteProduct(int productID)
+        {
+
+            Product toBeDeleted = ctx.Products.FirstOrDefault(p => p.ProductID == productID);
+            if (toBeDeleted != null)
+            {
+                ctx.Products.Remove(toBeDeleted);
+                ctx.SaveChanges();
+            }
         }
     }
 }

@@ -19,13 +19,17 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Sell Books</a>
                 </li>
+                @*<li class="nav-item">
+                    <a class="nav-link">Welcome @ViewBag.Welcome</a>
+                </li>*@
             </ul>
             
-                <ul class="navbar-nav mr-0">
-                    <li><a class="nav-item nav-link my-2 my-sm-0 mr-2" asp-controller="Admin" asp-action="AllUsers">Administrator</a></li>
-                    <li><a class="nav-item nav-link my-2 my-sm-0 mr-2" asp-controller="Account" asp-action="CreateUser">Register</a></li>
-                    <li><a class="nav-item nav-link my-2 my-sm-0" asp-controller="Account" asp-action="Login">Sign In</a></li>
-                </ul>
+            <ul class="navbar-nav mr-0">
+                <li><a class="nav-item nav-link my-2 my-sm-0 mr-2" asp-controller="Admin" asp-action="AllUsers">Administrator</a></li>
+                <li><a class="nav-item nav-link my-2 my-sm-0 mr-2" asp-controller="Account" asp-action="CreateUser">Register</a></li>
+                <li><a class="nav-item nav-link my-2 my-sm-0" asp-controller="Account" asp-action="Logout">Sign Out</a></li>
+                <li><a class="nav-item nav-link my-2 my-sm-0" asp-controller="Account" asp-action="Login">Sign In</a></li>
+            </ul>
             </div>
             
         

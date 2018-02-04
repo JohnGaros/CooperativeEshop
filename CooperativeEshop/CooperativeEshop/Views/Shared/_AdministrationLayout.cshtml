@@ -15,74 +15,50 @@
             <a class="nav-item nav-link my-2 my-sm-0" asp-controller="Account" asp-action="Login">Sign Out</a>
         </div>
     </nav>
-
-    <div class="container-fluid mt-5">
-        <div class="row">
-            <div class="col-4"></div>
-            <div class="col-6">
-                <ul class="nav nav-pills">
-                    <li class="nav-item">
-                        <a class="nav-link" asp-controller="AdminRoles" asp-action="AllRoles">View Roles</a>
-                    </li>
-                    
-                    <li class="nav-item">
-                        <a class="nav-link" asp-controller="AdminRoles" asp-action="CreateRole">Create Role</a>
-                    </li>
-                    
-                </ul>
-            </div>
-            <div class="col-2"></div>
-        </div>
-    </div>
-
-    <div class="container-fluid mt-5">
-        <div class="row">
-            <div class="col-2">
-                <ul class="nav nav-pills flex-column">
-                    <li class="nav-item">
-                        <a class="nav-link" asp-controller="Admin" asp-action="AllUsers">Sellers</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-controller="AdminRoles" asp-action="AllRoles">Roles</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Customers</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Active</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-10">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        
-                        <div class="col-1">
-                            
-                        </div>
-                        <div class="col-6">
-                            @RenderBody()
-                        </div>
-                        <div class="col-3"></div>
-                    </div>
-                </div>
-            </div>
-            
-        </div>
-    </div>
-
+    
    
 
+    <div class="container-fluid mt-5">
+        <div class="row justify-content-center">
+            <div class="col-2">
+                
+                <div class="list-group">
+                    <a class="list-group-item list-group-item-action" asp-controller="Admin" asp-action="AllUsers">
+                        All Users
+                    </a>
+                    <a class="list-group-item list-group-item-action" href="#">
+                        Sellers
+                    </a>
+                    <a class="list-group-item list-group-item-action" asp-controller="AdminRoles" asp-action="AllRoles">
+                        Roles
+                    </a>
+                    <a class="list-group-item list-group-item-action" asp-controller="AdminProducts" asp-action="AllProducts">
+                        Products
+                    </a>
+                </div>
+            </div>
+            <div class="col-10">
+                @ViewBag.Title
+                
+                    @RenderBody()
+                               
+            </div>
+
+        </div>
+    </div>
+
+
+
     <div>
-       
+
     </div>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/tether/dist/js/tether.min.js"></script>
     <script src="~/lib/bootstrap/js/dist/dropdown.js"></script>
     <script>
-        $("a").on("click", function () {
-            $("a").removeClass("active");
-            $(this).addClass("active")
+        $("a.list-group-item").on("click", function () {
+            $("a.list-group-item").removeClass("active");
+            $(this).addClass("active");
         });
     </script>
 </body>

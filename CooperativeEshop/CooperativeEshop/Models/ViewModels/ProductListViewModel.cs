@@ -4,10 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using CooperativeEshop.Core.Domain;
 
-namespace CooperativeEshop.Core.Repositories
+namespace CooperativeEshop.Models.ViewModels
 {
-    public interface IUserRepository
+    public class ProductListViewModel
     {
-        IQueryable<AppUser> AppUsers { get; }
+        public IEnumerable<Product> Products { get; set; }
     }
 }

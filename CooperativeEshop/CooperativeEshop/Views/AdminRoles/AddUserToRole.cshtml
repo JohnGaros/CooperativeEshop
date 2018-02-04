@@ -1,0 +1,22 @@
+﻿@model LoginUserViewModel
+@{Layout = "_Layout";}
+
+
+<div class="card mt-5">
+    <div class="card-body">
+        <h4 class="card-title">Seller Agreement</h4>
+        <h6 class="card-subtitle mb-2 text-muted">Contact us for more information</h6>
+        <p class="card-text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+        </p>
+        <form asp-controller="AdminRoles" asp-action="BecomeSeller">            
+            <input type="hidden" asp-for=@Model.Email />
+            <button class="btn btn-warning" type="submit">Agree</button>
+        </form>
+        
+    </div>
+</div>
+

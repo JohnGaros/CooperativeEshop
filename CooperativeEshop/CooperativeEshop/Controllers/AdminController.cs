@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
 using CooperativeEshop.Core.Domain;
-using CooperativeEshop.Core.Repositories;
+
 using CooperativeEshop.Models.ViewModels;
 
 using System.Threading.Tasks;
@@ -10,19 +10,19 @@ namespace CooperativeEshop.Controllers
 {
     public class AdminController : Controller
     {
-        private IUserRepository _userRepository;
+        
         private UserManager<AppUser> _userManager;
        
 
-        public AdminController(IUserRepository userRepository, UserManager<AppUser> userManager)
+        public AdminController(UserManager<AppUser> userManager)
         {
-            _userRepository = userRepository;
+            
             _userManager = userManager;
         }
 
         public ViewResult AllUsers() => View(new AdminUsersViewModel
         {
-            AllUsers = _userRepository.AppUsers
+            AllUsers = _userManager.Users
         });
 
         [HttpPost]

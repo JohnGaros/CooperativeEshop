@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using CooperativeEshop.Persistence.Repositories;
 using CooperativeEshop.Core.Domain;
-using CooperativeEshop.Core.Repositories;
+
 using CooperativeEshop.Persistence;
 
 
@@ -26,7 +26,7 @@ namespace CooperativeEshop
             services.AddIdentity<AppUser, IdentityRole>()
                 .AddEntityFrameworkStores<CoopEshopContext>()
                 .AddDefaultTokenProviders();
-            services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IProductRepository, ProductRepository>();
             services.AddMvc();
         }
 

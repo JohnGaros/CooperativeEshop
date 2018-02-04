@@ -25,9 +25,10 @@ namespace CooperativeEshop.Controllers
 
         [AllowAnonymous]
         public IActionResult Login(string returnUrl)
-        {
-            ViewBag.returnUrl = returnUrl;
-            return View();
+        {           
+            return View(new LoginUserViewModel {
+                ReturnUrl = returnUrl
+            });
         }
 
         [HttpPost]
@@ -45,12 +46,19 @@ namespace CooperativeEshop.Controllers
                         .PasswordSignInAsync(user, details.Password, false, false);
                     if (result.Succeeded)
                     {
+                        ViewBag.Welcome = user.UserName.ToString();
                         return Redirect(returnUrl ?? "/");
                     }
                 }
                 ModelState.AddModelError(nameof(LoginUserViewModel.Email), "Invalid email or password");
             }
             return View(details);
+        }
+
+        public async Task<RedirectResult> Logout(string returnUrl = "/")
+        {
+            await _signInManager.SignOutAsync();
+            return Redirect(returnUrl);
         }
         
         [AllowAnonymous]
