@@ -27,6 +27,7 @@ namespace CooperativeEshop
                 .AddEntityFrameworkStores<CoopEshopContext>()
                 .AddDefaultTokenProviders();
             services.AddTransient<IProductRepository, ProductRepository>();
+            services.AddTransient<IInventoryItemRepository, InventoryItemRepository>();
             services.AddMvc();
         }
 

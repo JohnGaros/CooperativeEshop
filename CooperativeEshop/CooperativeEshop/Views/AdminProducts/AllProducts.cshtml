@@ -4,7 +4,7 @@
 
 <div class="card border-light mb-3" style="max-width: 50rem;">
     <div class="card-header">
-        <h4>All Available Products</h4>
+        @Html.Partial("_AdminProductsLayout")
     </div>
     <div class="card-body">
         <table class="table table-hover">
@@ -27,13 +27,12 @@
 
                         <td>@product.Name</td>
                         <td>@product.InventoryItems</td>
-                        <td><input class="form-check-input" type="checkbox" /></td>
-                        <td><input class="form-check-input" type="checkbox" /></td>
+                        @*
                         <td>
-                            <form @*asp-controller="Admin" asp-action="Delete" asp-route-id="@user.Id"*@ method="post">
+                            <form asp-controller="AdminProducts" asp-action="Delete" method="post">
                                 <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                             </form>
-                        </td>
+                        </td>*@
                     </tr>
                 }
             }

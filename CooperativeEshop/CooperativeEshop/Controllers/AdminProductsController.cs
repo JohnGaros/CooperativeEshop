@@ -1,17 +1,19 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using CooperativeEshop.Persistence.Repositories;
 using CooperativeEshop.Models.ViewModels;
-
+using System.ComponentModel.DataAnnotations;
 
 namespace CooperativeEshop.Controllers
 {
     public class AdminProductsController : Controller
     {
         private IProductRepository _repo;
+        private IInventoryItemRepository _inventoryItem;
 
-        public AdminProductsController(IProductRepository repo)
+        public AdminProductsController(IProductRepository repo, IInventoryItemRepository inv)
         {
-            _repo = repo;    
+            _repo = repo;
+            _inventoryItem = inv;
         }
 
         public ViewResult AllProducts()
@@ -23,10 +25,14 @@ namespace CooperativeEshop.Controllers
                 });
                 
         }
+        
+        public IActionResult CreateProduct() => View();
 
-        //public IActionResult AddProduct(string name)
-        //{
-            
-        //}
+        [HttpPost]
+        public IActionResult CreateProduct(string name)
+        {
+            _repo.AddProduct(name);
+            return RedirectToAction(nameof(CreateProduct));
+        }
     }
 }

@@ -1,0 +1,21 @@
+﻿@model IEnumerable<Product>
+@{ Layout = "_AdministrationLayout";}
+
+
+<div class="card border-light mb-3" style="max-width: 50rem;">
+    <div class="card-header">
+        @Html.Partial("_AdminProductsLayout")
+    </div>
+    <div class="card-body">
+        <form>
+            <div class="form-group">
+                <label class="col-form-label">Enter Product Name</label>
+                <input class="form-control" type="text" placeholder="Product Name">
+
+                <label for="exampleInputFile">Add a cover image</label>
+                <input class="form-control-file" aria-describedby="fileHelp" type="file" />
+            </div>
+            <button class="btn btn-primary" type="submit">Create</button>
+        </form>
+    </div>
+</div>
