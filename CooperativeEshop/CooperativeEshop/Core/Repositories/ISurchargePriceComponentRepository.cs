@@ -2,7 +2,7 @@
 using System.Linq;
 
 
-namespace CooperativeEshop.Persistence.Repositories
+namespace CooperativeEshop.Core.Repositories
 {
     public interface ISurchargePriceComponentRepository
     {

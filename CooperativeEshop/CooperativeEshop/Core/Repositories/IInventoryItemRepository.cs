@@ -1,7 +1,7 @@
 ﻿using CooperativeEshop.Core.Domain;
 using System.Linq;
 
-namespace CooperativeEshop.Persistence.Repositories
+namespace CooperativeEshop.Core.Repositories
 {
     public interface IInventoryItemRepository
     {

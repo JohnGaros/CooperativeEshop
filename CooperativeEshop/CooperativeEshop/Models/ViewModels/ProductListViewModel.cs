@@ -10,5 +10,9 @@ namespace CooperativeEshop.Models.ViewModels
     {
         public IEnumerable<Product> Products { get; set; }
         public IEnumerable<InventoryItem> InventoryItems { get; set; }
+
+        public IEnumerable<PriceComponent> PriceComponents { get; set; }
+        public IEnumerable<BasePriceComponent> BasePriceComponents { get; set; }
+        public IEnumerable<SurchargePriceComponent> SurchargePriceComponents { get; set; }
     }
 }

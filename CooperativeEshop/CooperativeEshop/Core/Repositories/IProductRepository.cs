@@ -2,7 +2,7 @@
 using System.Linq;
 using CooperativeEshop.Core.Domain;
 
-namespace CooperativeEshop.Persistence.Repositories
+namespace CooperativeEshop.Core.Repositories
 {
     public interface IProductRepository
     {
@@ -10,5 +10,6 @@ namespace CooperativeEshop.Persistence.Repositories
         void AddProduct(Product product);
         void UpdateProduct(Product product);
         void DeleteProduct(int productId);
+        
     }
 }

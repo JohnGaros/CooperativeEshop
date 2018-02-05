@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using CooperativeEshop.Core.Domain;
+using CooperativeEshop.Core.Repositories;
 
 namespace CooperativeEshop.Persistence.Repositories
 {
@@ -28,7 +29,7 @@ namespace CooperativeEshop.Persistence.Repositories
         public void DeleteProduct(int ProductID)
         {
 
-            Product toBeDeleted = ctx.Products.FirstOrDefault(p => p.ProductID == ProductID);
+            Product toBeDeleted = ctx.Products.Find(ProductID);
             if (toBeDeleted != null)
             {
                 ctx.Products.Remove(toBeDeleted);

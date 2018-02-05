@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using CooperativeEshop.Core.Domain;
+using CooperativeEshop.Core.Repositories;
 
 namespace CooperativeEshop.Persistence.Repositories
 {

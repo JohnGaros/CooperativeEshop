@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using CooperativeEshop.Core.Domain;
 
-namespace CooperativeEshop.Persistence.Repositories
+namespace CooperativeEshop.Core.Repositories
 {
     public interface IBasePriceComponentRepository
     {

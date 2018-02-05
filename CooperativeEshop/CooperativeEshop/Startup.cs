@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using CooperativeEshop.Persistence.Repositories;
 using CooperativeEshop.Core.Domain;
+using CooperativeEshop.Core.Repositories;
+using CooperativeEshop.Core;
 
 using CooperativeEshop.Persistence;
 
@@ -31,6 +33,7 @@ namespace CooperativeEshop
             services.AddTransient<IPriceComponentRepository, PriceComponentRepository>();
             services.AddTransient<IBasePriceComponentRepository, BasePriceComponentRepository>();
             services.AddTransient<ISurchargePriceComponentRepository, SurchargePriceComponentRepository>();
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddMvc();
         }
 

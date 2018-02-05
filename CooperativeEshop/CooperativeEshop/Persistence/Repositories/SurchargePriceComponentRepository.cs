@@ -1,4 +1,5 @@
 ﻿using CooperativeEshop.Core.Domain;
+using CooperativeEshop.Core.Repositories;
 using System.Linq;
 
 

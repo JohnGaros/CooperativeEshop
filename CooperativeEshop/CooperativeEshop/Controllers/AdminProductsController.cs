@@ -2,6 +2,7 @@
 using CooperativeEshop.Persistence.Repositories;
 using CooperativeEshop.Models.ViewModels;
 using CooperativeEshop.Core.Domain;
+using CooperativeEshop.Core.Repositories;
 using System.ComponentModel.DataAnnotations;
 
 namespace CooperativeEshop.Controllers
