@@ -8,7 +8,6 @@ namespace CooperativeEshop.Core
         IProductRepository Products { get; set; }
         IInventoryItemRepository InventoryItems { get; set; }
         IPriceComponentRepository PriceComponents { get; set; }
-        IBasePriceComponentRepository BasePriceComponents { get; set; }
-        ISurchargePriceComponentRepository SurchargePriceComponents { get; set; }
+        
     }
 }

@@ -11,8 +11,7 @@ namespace CooperativeEshop.Persistence
         public IProductRepository Products { get; set; }
         public IInventoryItemRepository InventoryItems { get; set; }
         public IPriceComponentRepository PriceComponents { get; set; }
-        public IBasePriceComponentRepository BasePriceComponents { get; set; }
-        public ISurchargePriceComponentRepository SurchargePriceComponents { get; set; }
+
 
         public UnitOfWork(CoopEshopContext context)
         {
@@ -21,9 +20,7 @@ namespace CooperativeEshop.Persistence
             Products = new ProductRepository(ctx);
             InventoryItems = new InventoryItemRepository(ctx);
             PriceComponents = new PriceComponentRepository(ctx);
-            BasePriceComponents = new BasePriceComponentRepository(ctx);
-            SurchargePriceComponents = new SurchargePriceComponentRepository(ctx);
-        }
 
+        }
     }
 }

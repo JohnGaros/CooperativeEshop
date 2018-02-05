@@ -13,15 +13,15 @@ namespace CooperativeEshop.Persistence.Repositories
             ctx = context;
         }
 
-        public IQueryable<PriceComponent> PriceComponents => ctx.PriceComponents;
+        public IQueryable<ProductPriceComponents> PriceComponents => ctx.ProductPriceComponents;
 
-        public void AddPriceComponent(PriceComponent priceComponent)
+        public void AddPriceComponent(ProductPriceComponents priceComponent)
         {
-            ctx.PriceComponents.Add(priceComponent);
+            ctx.ProductPriceComponents.Add(priceComponent);
             ctx.SaveChanges();
         }
 
-        public void UpdatePriceComponent(PriceComponent priceComponent)
+        public void UpdatePriceComponent(ProductPriceComponents priceComponent)
         {
             ctx.Update(priceComponent);
             ctx.SaveChanges();
@@ -29,10 +29,10 @@ namespace CooperativeEshop.Persistence.Repositories
 
         public void DeletePriceComponent(int PriceComponentID)
         {
-            PriceComponent toBeDeleted = ctx.PriceComponents.FirstOrDefault(x => x.PriceComponentID == PriceComponentID);
+            ProductPriceComponents toBeDeleted = ctx.ProductPriceComponents.FirstOrDefault(x => x.PriceComponentID == PriceComponentID);
             if(toBeDeleted != null)
             {
-                ctx.PriceComponents.Remove(toBeDeleted);
+                ctx.ProductPriceComponents.Remove(toBeDeleted);
                 ctx.SaveChanges();
             }           
         }

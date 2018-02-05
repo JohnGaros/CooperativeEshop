@@ -73,17 +73,6 @@ namespace CooperativeEshop.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("CooperativeEshop.Core.Domain.BasePriceComponent", b =>
-                {
-                    b.Property<int>("PriceComponentID");
-
-                    b.Property<decimal>("BasePrice");
-
-                    b.HasKey("PriceComponentID");
-
-                    b.ToTable("BasePriceComponents");
-                });
-
             modelBuilder.Entity("CooperativeEshop.Core.Domain.Cart", b =>
                 {
                     b.Property<int>("CartID")
@@ -268,30 +257,6 @@ namespace CooperativeEshop.Migrations
                     b.ToTable("PhysicalAddresses");
                 });
 
-            modelBuilder.Entity("CooperativeEshop.Core.Domain.PriceComponent", b =>
-                {
-                    b.Property<int>("PriceComponentID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<DateTime>("FromDate");
-
-                    b.Property<int?>("ProductID")
-                        .IsRequired();
-
-                    b.Property<string>("SellerId")
-                        .IsRequired();
-
-                    b.Property<DateTime>("ThruDate");
-
-                    b.HasKey("PriceComponentID");
-
-                    b.HasIndex("ProductID");
-
-                    b.HasIndex("SellerId");
-
-                    b.ToTable("PriceComponents");
-                });
-
             modelBuilder.Entity("CooperativeEshop.Core.Domain.Product", b =>
                 {
                     b.Property<int>("ProductID")
@@ -331,15 +296,32 @@ namespace CooperativeEshop.Migrations
                     b.ToTable("ProductCategoryClassifications");
                 });
 
-            modelBuilder.Entity("CooperativeEshop.Core.Domain.SurchargePriceComponent", b =>
+            modelBuilder.Entity("CooperativeEshop.Core.Domain.ProductPriceComponents", b =>
                 {
-                    b.Property<int>("PriceComponentID");
+                    b.Property<int>("PriceComponentID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<decimal>("BasePrice");
+
+                    b.Property<DateTime>("FromDate");
+
+                    b.Property<int?>("ProductID")
+                        .IsRequired();
+
+                    b.Property<string>("SellerId")
+                        .IsRequired();
 
                     b.Property<decimal>("Surcharge");
 
+                    b.Property<DateTime>("ThruDate");
+
                     b.HasKey("PriceComponentID");
 
-                    b.ToTable("SurchargePriceComponents");
+                    b.HasIndex("ProductID");
+
+                    b.HasIndex("SellerId");
+
+                    b.ToTable("ProductPriceComponents");
                 });
 
             modelBuilder.Entity("CooperativeEshop.Core.Domain.UserCommunicationChannel", b =>
@@ -463,14 +445,6 @@ namespace CooperativeEshop.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("CooperativeEshop.Core.Domain.BasePriceComponent", b =>
-                {
-                    b.HasOne("CooperativeEshop.Core.Domain.PriceComponent", "PriceComponent")
-                        .WithOne("BasePrice")
-                        .HasForeignKey("CooperativeEshop.Core.Domain.BasePriceComponent", "PriceComponentID")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
             modelBuilder.Entity("CooperativeEshop.Core.Domain.Cart", b =>
                 {
                     b.HasOne("CooperativeEshop.Core.Domain.AppUser", "Customer")
@@ -565,19 +539,6 @@ namespace CooperativeEshop.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("CooperativeEshop.Core.Domain.PriceComponent", b =>
-                {
-                    b.HasOne("CooperativeEshop.Core.Domain.Product", "Product")
-                        .WithMany("SellerProduct")
-                        .HasForeignKey("ProductID")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("CooperativeEshop.Core.Domain.AppUser", "Seller")
-                        .WithMany("SellerPrices")
-                        .HasForeignKey("SellerId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
             modelBuilder.Entity("CooperativeEshop.Core.Domain.ProductCategoryClassification", b =>
                 {
                     b.HasOne("CooperativeEshop.Core.Domain.ProductCategory", "Category")
@@ -591,11 +552,16 @@ namespace CooperativeEshop.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("CooperativeEshop.Core.Domain.SurchargePriceComponent", b =>
+            modelBuilder.Entity("CooperativeEshop.Core.Domain.ProductPriceComponents", b =>
                 {
-                    b.HasOne("CooperativeEshop.Core.Domain.PriceComponent", "PriceComponent")
-                        .WithOne("Surcharge")
-                        .HasForeignKey("CooperativeEshop.Core.Domain.SurchargePriceComponent", "PriceComponentID")
+                    b.HasOne("CooperativeEshop.Core.Domain.Product", "Product")
+                        .WithMany("SellerProduct")
+                        .HasForeignKey("ProductID")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("CooperativeEshop.Core.Domain.AppUser", "Seller")
+                        .WithMany("SellerPrices")
+                        .HasForeignKey("SellerId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

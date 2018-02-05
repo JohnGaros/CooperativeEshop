@@ -31,8 +31,7 @@ namespace CooperativeEshop
             services.AddTransient<IProductRepository, ProductRepository>();
             services.AddTransient<IInventoryItemRepository, InventoryItemRepository>();
             services.AddTransient<IPriceComponentRepository, PriceComponentRepository>();
-            services.AddTransient<IBasePriceComponentRepository, BasePriceComponentRepository>();
-            services.AddTransient<ISurchargePriceComponentRepository, SurchargePriceComponentRepository>();
+            
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddMvc();
         }

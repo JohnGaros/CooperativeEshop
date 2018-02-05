@@ -5,15 +5,15 @@ using System.Threading.Tasks;
 
 namespace CooperativeEshop.Core.Domain
 {
-    public class PriceComponent
+    public class ProductPriceComponents
     {
         public int PriceComponentID { get; set; }
 
         public AppUser Seller { get; set; }
         public Product Product { get; set; }
 
-        public BasePriceComponent BasePrice { get; set; }
-        public SurchargePriceComponent Surcharge { get; set; }
+        public decimal BasePrice { get; set; }
+        public decimal Surcharge { get; set; }
 
         public DateTime FromDate { get; set; }
         public DateTime ThruDate { get; set; }

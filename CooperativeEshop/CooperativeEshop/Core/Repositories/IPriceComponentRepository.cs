@@ -5,9 +5,9 @@ namespace CooperativeEshop.Core.Repositories
 {
     public interface IPriceComponentRepository
     {
-        IQueryable<PriceComponent> PriceComponents { get; }
-        void AddPriceComponent(PriceComponent priceComponent);
-        void UpdatePriceComponent(PriceComponent priceComponent);
+        IQueryable<ProductPriceComponents> PriceComponents { get; }
+        void AddPriceComponent(ProductPriceComponents priceComponent);
+        void UpdatePriceComponent(ProductPriceComponents priceComponent);
         void DeletePriceComponent(int PriceComponentID);
     }
 }

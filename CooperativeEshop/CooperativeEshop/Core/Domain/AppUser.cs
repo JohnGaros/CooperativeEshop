@@ -14,7 +14,7 @@ namespace CooperativeEshop.Core.Domain
         public Cart Cart { get; set; }
         
         public ICollection<UserCommunicationChannel> UserCommunicationChannels { get; set; }
-        public ICollection<PriceComponent> SellerPrices { get; set; }
+        public ICollection<ProductPriceComponents> SellerPrices { get; set; }
         public ICollection<InventoryItem> InventoryItems { get; set; }
         
     }

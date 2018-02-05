@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using CooperativeEshop.Core.Domain;
 using CooperativeEshop.Core.Repositories;
+using System.Collections.Generic;
 
 namespace CooperativeEshop.Persistence.Repositories
 {
@@ -36,5 +37,23 @@ namespace CooperativeEshop.Persistence.Repositories
                 ctx.SaveChanges();
             }
         }
+
+        public int QuantityAtHand(Product product)
+        {
+            IQueryable<InventoryItem> ProductInventoryItems = ctx.InventoryItems.Where(x => x.ProductID == product.ProductID);
+            return ProductInventoryItems.Sum(x => x.StockQuantity);
+        }
+
+        //public decimal MinPrice(Product product)
+        //{
+        //    IQueryable<BasePriceComponent> BasePriceComponents = ctx.BasePriceComponents
+        //        .Where(x => x.PriceComponent.Product == product && x.PriceComponent.ThruDate == null);
+        //    IQueryable<SurchargePriceComponent> SurchargePriceComponent = ctx.SurchargePriceComponents
+        //        .Where(x => x.PriceComponent.Product == product && x.PriceComponent.ThruDate == null);
+        //    IQueryable TotalPrices = 
+
+        //}
+
+
     }
 }
