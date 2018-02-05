@@ -22,19 +22,16 @@ namespace CooperativeEshop.Persistence.Repositories
             ctx.Update(product);
             ctx.SaveChanges();
         }
-        public void AddProduct (string name)
+        public void AddProduct (Product product)
         {
-            Product newProduct = new Product
-            {
-                Name = name
-            };
-            ctx.Products.Add(newProduct);
+           
+            ctx.Products.Add(product);
             ctx.SaveChanges();
         }
-        public void DeleteProduct(int productID)
+        public void DeleteProduct(int ProductID)
         {
 
-            Product toBeDeleted = ctx.Products.FirstOrDefault(p => p.ProductID == productID);
+            Product toBeDeleted = ctx.Products.FirstOrDefault(p => p.ProductID == ProductID);
             if (toBeDeleted != null)
             {
                 ctx.Products.Remove(toBeDeleted);

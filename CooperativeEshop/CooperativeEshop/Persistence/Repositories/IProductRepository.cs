@@ -7,7 +7,7 @@ namespace CooperativeEshop.Persistence.Repositories
     public interface IProductRepository
     {
         IQueryable<Product> Products { get; }
-        void AddProduct(string name);
+        void AddProduct(Product product);
         void UpdateProduct(Product product);
         void DeleteProduct(int productId);
     }

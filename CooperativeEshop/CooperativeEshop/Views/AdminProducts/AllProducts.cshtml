@@ -11,7 +11,7 @@
             <thead>
                 <tr>
                     <th scope="col">Product Name</th>
-                    <th scope="col">Quantity</th>
+                    <th scope="col">Cover</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
@@ -26,13 +26,13 @@
                     <tr>
 
                         <td>@product.Name</td>
-                        <td>@product.InventoryItems</td>
-                        @*
+                        <td><img height="42" width="42" src=@product.CoverFilePath></td>
+                        
                         <td>
-                            <form asp-controller="AdminProducts" asp-action="Delete" method="post">
+                            <form asp-controller="AdminProducts" asp-action="DeleteProduct" asp-route-ProductID ="@product.ProductID" method="post">
                                 <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                             </form>
-                        </td>*@
+                        </td>
                     </tr>
                 }
             }

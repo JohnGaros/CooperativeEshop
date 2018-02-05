@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Product>
+﻿@model CreateProductViewModel
 @{ Layout = "_AdministrationLayout";}
 
 
@@ -7,13 +7,13 @@
         @Html.Partial("_AdminProductsLayout")
     </div>
     <div class="card-body">
-        <form>
+        <form asp-controller="AdminProducts" asp-action="CreateProduct" method="post">
             <div class="form-group">
                 <label class="col-form-label">Enter Product Name</label>
-                <input class="form-control" type="text" placeholder="Product Name">
+                <input class="form-control" type="text" placeholder="Product Name" asp-for="@Model.Product.Name"/>
 
                 <label for="exampleInputFile">Add a cover image</label>
-                <input class="form-control-file" aria-describedby="fileHelp" type="file" />
+                <input class="form-control-file" aria-describedby="fileHelp" type="file" asp-for="@Model.Product.CoverFilePath" />
             </div>
             <button class="btn btn-primary" type="submit">Create</button>
         </form>

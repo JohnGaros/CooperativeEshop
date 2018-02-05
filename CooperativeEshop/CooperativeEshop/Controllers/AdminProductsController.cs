@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using CooperativeEshop.Persistence.Repositories;
 using CooperativeEshop.Models.ViewModels;
+using CooperativeEshop.Core.Domain;
 using System.ComponentModel.DataAnnotations;
 
 namespace CooperativeEshop.Controllers
@@ -29,10 +30,19 @@ namespace CooperativeEshop.Controllers
         public IActionResult CreateProduct() => View();
 
         [HttpPost]
-        public IActionResult CreateProduct(string name)
+        public IActionResult CreateProduct(CreateProductViewModel newProduct)
         {
-            _repo.AddProduct(name);
+            Product product = newProduct.Product;
+            product.CoverFilePath = $"/Images/" + newProduct.Product.CoverFilePath;
+            _repo.AddProduct(product);
             return RedirectToAction(nameof(CreateProduct));
+        }
+
+        [HttpPost]
+        public IActionResult DeleteProduct(int ProductID)
+        {
+            _repo.DeleteProduct(ProductID);
+            return RedirectToAction(nameof(AllProducts));
         }
     }
 }
