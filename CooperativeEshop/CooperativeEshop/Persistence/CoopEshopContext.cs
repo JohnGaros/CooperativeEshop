@@ -24,8 +24,6 @@ namespace CooperativeEshop.Persistence
         public DbSet<ProductCategory> ProductCategories { get; set; }
         public DbSet<ProductCategoryClassification> ProductCategoryClassifications { get; set; }
         public DbSet<ProductPriceComponents> ProductPriceComponents { get; set; }
-        //public DbSet<BasePriceComponent> BasePriceComponents { get; set; }
-        //public DbSet<SurchargePriceComponent> SurchargePriceComponents { get; set; }
         public DbSet<Cart> Carts { get; set; }
         public DbSet<CartItem> CartItems { get; set; }
         public DbSet<Order> Orders { get; set; }
@@ -65,12 +63,6 @@ namespace CooperativeEshop.Persistence
             builder.Entity<ProductPriceComponents>().HasKey(x => x.PriceComponentID);
             builder.Entity<ProductPriceComponents>().HasOne(x => x.Seller).WithMany(x => x.SellerPrices).IsRequired();
             builder.Entity<ProductPriceComponents>().HasOne(x => x.Product).WithMany(x => x.SellerProduct).IsRequired();
-
-            //builder.Entity<BasePriceComponent>().HasKey(x => x.PriceComponentID);
-            //builder.Entity<BasePriceComponent>().HasOne(x => x.PriceComponent).WithOne(x => x.BasePrice).IsRequired();
-
-            //builder.Entity<SurchargePriceComponent>().HasKey(x => x.PriceComponentID);
-            //builder.Entity<SurchargePriceComponent>().HasOne(x => x.PriceComponent).WithOne(x => x.Surcharge).IsRequired();
 
             builder.Entity<Cart>().HasKey(x => x.CartID);
             builder.Entity<Cart>().HasOne(x => x.Customer).WithOne(x => x.Cart).IsRequired();

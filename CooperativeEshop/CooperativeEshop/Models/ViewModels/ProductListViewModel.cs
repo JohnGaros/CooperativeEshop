@@ -3,15 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CooperativeEshop.Core.Domain;
+using CooperativeEshop.Core.Repositories;
 
 namespace CooperativeEshop.Models.ViewModels
 {
     public class ProductListViewModel
     {
-        public IEnumerable<Product> Products { get; set; }
-        public IEnumerable<InventoryItem> InventoryItems { get; set; }
-
-        public IEnumerable<ProductPriceComponents> PriceComponents { get; set; }
-        
+        public IProductRepository productRepository { get; set; }
     }
 }

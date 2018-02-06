@@ -15,18 +15,18 @@
                     <th scope="col">Action</th>
                 </tr>
             </thead>
-            @if (Model.Products.Count() == 0)
+            @if (Model.productRepository.Products.Count() == 0)
             {
                 <tr><td colspan="3" class="text-center">No Products available</td></tr>
             }
             else
             {
-                foreach (Product product in Model.Products)
+                foreach (Product product in Model.productRepository.Products)
                 {
                     <tr>
 
                         <td>@product.Name</td>
-                        <td><img height="42" width="42" src=@product.CoverFilePath></td>
+                        <td><img height="60" width="40" src=@product.CoverFilePath></td>
                         
                         <td>
                             <form asp-controller="AdminProducts" asp-action="DeleteProduct" asp-route-ProductID ="@product.ProductID" method="post">

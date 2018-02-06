@@ -21,9 +21,9 @@ namespace CooperativeEshop.Controllers
             return View();
         }
 
-        //public ViewResult Products(ProductListViewModel model)
-        //{
-        //    model
-        //}
+        public ViewResult ProductCard() => View(new ProductListViewModel
+        {
+            productRepository = _unitOfWork.Products
+        });
     }
 }

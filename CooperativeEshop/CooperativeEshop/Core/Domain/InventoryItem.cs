@@ -14,8 +14,6 @@ namespace CooperativeEshop.Core.Domain
         public int ProductID { get; set; }
 
         public int StockQuantity { get; set; }
-        //Represents the date the stock quantity has changed - 
-        //a stock change registers as a new table entry
-        public DateTime Date { get; set; }
+        public bool GoLive { get; set; } = false;
     }
 }

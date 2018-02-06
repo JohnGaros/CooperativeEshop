@@ -6,8 +6,8 @@ namespace CooperativeEshop.Models.ViewModels
 {
     public class ProductCardViewModel
     {
-        public Product Product { get; set; }
-
-        
+        public string ProductName { get; set; }
+        public string CoverFile { get; set; }
+        public decimal MinPrice { get; set; }        
     }
 }

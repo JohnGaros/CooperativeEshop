@@ -1,6 +1,8 @@
 ﻿using System.Linq;
 using CooperativeEshop.Core.Domain;
 using CooperativeEshop.Core.Repositories;
+
+using System;
 using System.Collections.Generic;
 
 namespace CooperativeEshop.Persistence.Repositories
@@ -14,7 +16,7 @@ namespace CooperativeEshop.Persistence.Repositories
             ctx = context;
         }
 
-        public IQueryable<Product> Products => ctx.Products;
+        public IEnumerable<Product> Products => ctx.Products;
 
         public void UpdateProduct(Product product)
         {
@@ -44,16 +46,24 @@ namespace CooperativeEshop.Persistence.Repositories
             return ProductInventoryItems.Sum(x => x.StockQuantity);
         }
 
-        //public decimal MinPrice(Product product)
-        //{
-        //    IQueryable<BasePriceComponent> BasePriceComponents = ctx.BasePriceComponents
-        //        .Where(x => x.PriceComponent.Product == product && x.PriceComponent.ThruDate == null);
-        //    IQueryable<SurchargePriceComponent> SurchargePriceComponent = ctx.SurchargePriceComponents
-        //        .Where(x => x.PriceComponent.Product == product && x.PriceComponent.ThruDate == null);
-        //    IQueryable TotalPrices = 
-
-        //}
-
-
+        public decimal MinPrice(Product product)
+        {
+            IEnumerable<ProductPriceComponents> components = ctx.ProductPriceComponents.Where(x => x.Product == product);
+            List<decimal> totalPrices = new List<decimal>();
+            if(components == null)
+            {
+                return 0M;
+            }
+            else
+            {
+                foreach (ProductPriceComponents p in components)
+                {
+                    totalPrices.Add(p.BasePrice + p.Surcharge);
+                }
+                return totalPrices.Min();
+            }
+            
+            
+        }     
     }
 }

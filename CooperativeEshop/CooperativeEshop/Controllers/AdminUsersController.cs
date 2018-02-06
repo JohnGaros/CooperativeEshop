@@ -1,20 +1,18 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
 using CooperativeEshop.Core.Domain;
-
 using CooperativeEshop.Models.ViewModels;
-
 using System.Threading.Tasks;
 
 namespace CooperativeEshop.Controllers
 {
-    public class AdminController : Controller
+    public class AdminUsersController : Controller
     {
         
         private UserManager<AppUser> _userManager;
        
 
-        public AdminController(UserManager<AppUser> userManager)
+        public AdminUsersController(UserManager<AppUser> userManager)
         {
             
             _userManager = userManager;

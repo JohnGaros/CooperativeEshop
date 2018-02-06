@@ -2,6 +2,7 @@
 using CooperativeEshop.Persistence.Repositories;
 using CooperativeEshop.Models.ViewModels;
 using CooperativeEshop.Core.Domain;
+using CooperativeEshop.Core;
 using CooperativeEshop.Core.Repositories;
 using System.ComponentModel.DataAnnotations;
 
@@ -9,24 +10,18 @@ namespace CooperativeEshop.Controllers
 {
     public class AdminProductsController : Controller
     {
-        private IProductRepository _repo;
-        private IInventoryItemRepository _inventoryItem;
+       
+        private IUnitOfWork _unitOfWork;
 
-        public AdminProductsController(IProductRepository repo, IInventoryItemRepository inv)
+        public AdminProductsController(IUnitOfWork unit)
         {
-            _repo = repo;
-            _inventoryItem = inv;
+            _unitOfWork = unit;
         }
 
-        public ViewResult AllProducts()
-        {
-            return View(
-                new ProductListViewModel
-                {
-                    Products = _repo.Products
-                });
-                
-        }
+        public ViewResult AllProducts() => View(new ProductListViewModel {
+            productRepository = _unitOfWork.Products
+        });
+        
         
         public IActionResult CreateProduct() => View();
 
@@ -35,14 +30,14 @@ namespace CooperativeEshop.Controllers
         {
             Product product = newProduct.Product;
             product.CoverFilePath = $"/Images/" + newProduct.Product.CoverFilePath;
-            _repo.AddProduct(product);
+            _unitOfWork.Products.AddProduct(product);
             return RedirectToAction(nameof(CreateProduct));
         }
 
         [HttpPost]
         public IActionResult DeleteProduct(int ProductID)
         {
-            _repo.DeleteProduct(ProductID);
+            _unitOfWork.Products.DeleteProduct(ProductID);
             return RedirectToAction(nameof(AllProducts));
         }
     }
