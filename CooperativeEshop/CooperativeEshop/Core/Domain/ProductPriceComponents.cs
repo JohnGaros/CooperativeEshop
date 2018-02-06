@@ -13,7 +13,7 @@ namespace CooperativeEshop.Core.Domain
         public Product Product { get; set; }
 
         public decimal BasePrice { get; set; }
-        public decimal Surcharge { get; set; }
+        public decimal SalePrice { get; set; }
 
         public DateTime FromDate { get; set; }
         public DateTime ThruDate { get; set; }

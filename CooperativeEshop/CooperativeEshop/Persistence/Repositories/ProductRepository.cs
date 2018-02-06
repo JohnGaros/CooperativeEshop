@@ -58,7 +58,7 @@ namespace CooperativeEshop.Persistence.Repositories
             {
                 foreach (ProductPriceComponents p in components)
                 {
-                    totalPrices.Add(p.BasePrice + p.Surcharge);
+                    totalPrices.Add(p.SalePrice);
                 }
                 return totalPrices.Min();
             }
