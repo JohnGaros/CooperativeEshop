@@ -12,11 +12,8 @@ namespace CooperativeEshop.Core.Domain
         public Cart Cart { get; set; }
         public int CartID { get; set; }
 
-        public Product Product { get; set; }
-        public int ProductID { get; set; }
-
-        public AppUser Seller { get; set; }
-        public string SellerID { get; set; }
+        public InventoryItem InventoryItem { get; set; }
+        public int IneventoryItemID { get; set; }
 
         public int QuantityInCart { get; set; }
         public decimal UnitPrice { get; set; }

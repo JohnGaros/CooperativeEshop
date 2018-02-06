@@ -1,0 +1,44 @@
+﻿@model SellerProductsViewModel
+@{ Layout = "_SellerLayout";}
+
+
+<form style="width:20rem;">
+    <fieldset>
+        <legend class="mb-3">Offer a Book</legend>
+
+        <div class="form-group">
+            <label for="exampleSelect1">Book Name</label>
+            <select class="form-control" id="exampleSelect1">
+                @foreach (Product product in Model.ProductRepository.Products)
+                {
+                    <option>@product.Name</option>
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="exampleSelect2">Stock Quantity</label>
+            <select class="form-control" id="exampleSelect2">
+                @for (int i = 0; i < 100; i++)
+                {
+                    <option>@i</option>
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Base Price</label>
+            <div class="form-group">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Euro  </span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                    <div class="input-group-append">
+                        <span class="input-group-text">.00</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </fieldset>
+    <button type="button" class="btn btn-primary btn-lg btn-block mt-3">Offer the Book</button>
+</form>

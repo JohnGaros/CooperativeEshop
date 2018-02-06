@@ -9,8 +9,8 @@ namespace CooperativeEshop.Core.Domain
     {
         public int PriceComponentID { get; set; }
 
-        public AppUser Seller { get; set; }
-        public Product Product { get; set; }
+        public InventoryItem InventoryItem { get; set; }
+        public int IneventoryItemID { get; set; }
 
         public decimal BasePrice { get; set; }
         public decimal SalePrice { get; set; }

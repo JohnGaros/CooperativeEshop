@@ -46,24 +46,24 @@ namespace CooperativeEshop.Persistence.Repositories
             return ProductInventoryItems.Sum(x => x.StockQuantity);
         }
 
-        public decimal MinPrice(Product product)
-        {
-            IEnumerable<ProductPriceComponents> components = ctx.ProductPriceComponents.Where(x => x.Product == product);
-            List<decimal> totalPrices = new List<decimal>();
-            if(components == null)
-            {
-                return 0M;
-            }
-            else
-            {
-                foreach (ProductPriceComponents p in components)
-                {
-                    totalPrices.Add(p.SalePrice);
-                }
-                return totalPrices.Min();
-            }
+        //public decimal MinPrice(Product product)
+        //{
+        //    IEnumerable<InventoryItem> ProductInventory = ctx.InventoryItems.Where(x => x.Product == product);
+        //    List<decimal> totalPrices = new List<decimal>();
+        //    if(components == null)
+        //    {
+        //        return 0M;
+        //    }
+        //    else
+        //    {
+        //        foreach (InventoryItem p in ProductInventory)
+        //        {
+        //            totalPrices.Add(p.SalePrice);
+        //        }
+        //        return totalPrices.Min();
+        //    }
             
             
-        }     
+        //}     
     }
 }

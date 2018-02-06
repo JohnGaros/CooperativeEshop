@@ -15,36 +15,34 @@
             <a class="nav-item nav-link my-2 my-sm-0" asp-controller="Account" asp-action="Logout">Sign Out</a>
         </div>
     </nav>
-    
-   
+
+
 
     <div class="container-fluid mt-5">
         <div class="row justify-content-center">
             <div class="col-2">
-                
+
                 <div class="list-group">
-                    <a class="list-group-item list-group-item-action" asp-controller="AdminUsers" asp-action="AllUsers">
-                        All Users
+                    <a class="list-group-item list-group-item-action" asp-controller="Seller" asp-action="ProductsOffered">
+                        All Products
                     </a>
-                    <a class="list-group-item list-group-item-action" href="#">
-                        Sellers
+                    <a class="list-group-item list-group-item-action" asp-controller="Seller" asp-action="ProductNewOffer">
+                        Offer New Product
                     </a>
                     <a class="list-group-item list-group-item-action" asp-controller="AdminRoles" asp-action="AllRoles">
-                        Roles
+                        Edit Offerings
                     </a>
-                    <a class="list-group-item list-group-item-action" asp-controller="AdminProducts" asp-action="AllProducts">
-                        Products
-                    </a>
+
                 </div>
             </div>
             <div class="col-1"></div>
             <div class="col-9">
-                @ViewBag.Title
-                
-                    @RenderBody()
-                               
+               
+
+                @RenderBody()
+
             </div>
-            
+
         </div>
     </div>
 

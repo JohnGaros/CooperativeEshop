@@ -61,15 +61,15 @@ namespace CooperativeEshop.Persistence
             builder.Entity<ProductCategoryClassification>().HasOne(x => x.Category).WithMany(x => x.ProductCategoryClassifications).IsRequired().HasForeignKey(x => x.CategoryID).IsRequired();
 
             builder.Entity<ProductPriceComponents>().HasKey(x => x.PriceComponentID);
-            builder.Entity<ProductPriceComponents>().HasOne(x => x.Seller).WithMany(x => x.SellerPrices).IsRequired();
-            builder.Entity<ProductPriceComponents>().HasOne(x => x.Product).WithMany(x => x.SellerProduct).IsRequired();
+            builder.Entity<ProductPriceComponents>().HasOne(x => x.InventoryItem).WithMany(x => x.ProductPriceComponents).IsRequired();
+            
 
             builder.Entity<Cart>().HasKey(x => x.CartID);
             builder.Entity<Cart>().HasOne(x => x.Customer).WithOne(x => x.Cart).IsRequired();
 
             builder.Entity<CartItem>().HasKey(x => x.CartItemID);
             builder.Entity<CartItem>().HasOne(x => x.Cart).WithMany(x => x.CartItems).IsRequired();
-            builder.Entity<CartItem>().HasOne(x => x.Product).WithMany(x => x.CartItems).IsRequired();
+            builder.Entity<CartItem>().HasOne(x => x.InventoryItem).WithMany(x => x.CartItems).IsRequired();
 
             builder.Entity<Order>().HasKey(x => x.OrderID);
             builder.Entity<Order>().HasOne(x => x.Cart).WithMany(x => x.Orders).IsRequired();

@@ -13,26 +13,14 @@
             @foreach (Product p in Model.productRepository.Products)
             {
                 <div class="col-3">
-                    <div class="card mb-3 mx-3">
-
-                        <div class="card-body">
-                            <h5 class="card-title">@p.Name</h5>
-
-                        </div>
-                        <div class=" container-fluid align-content-center">
+                    <div class="card bg-light mx-3" style="max-width:15rem;">
+                        <div class=" container-fluid align-content-center mt-3">
                             <img style=" width:100%; display: block;" alt="Card image" src=@p.CoverFilePath>
                         </div>
-                        
+                                             
                         <div class="card-body">
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">Prices start form @*@Model.productRepository.MinPrice(p)*@</li>
-
-                            </ul> 
-                        </div>
-                        
-                        <div class="card-body">
-                            <a class="card-link" href="#">Vew Product Derails</a>
-                            <a class="card-link" href="#">Another link</a>
+                            <button type="button" class="btn btn-primary btn-sm btn-block">Vew Product Derails</button>
+                            
                         </div>
 
                     </div>

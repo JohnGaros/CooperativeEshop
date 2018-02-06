@@ -14,7 +14,7 @@ namespace CooperativeEshop.Core.Repositories
         void DeleteProduct(int productId);
 
         int QuantityAtHand(Product product);
-        decimal MinPrice(Product product);
+        //decimal MinPrice(Product product);
 
     }
 }

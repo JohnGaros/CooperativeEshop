@@ -26,6 +26,7 @@
             
             <ul class="navbar-nav mr-0">
                 <li><a class="nav-item nav-link my-2 my-sm-0 mr-2" asp-controller="AdminUsers" asp-action="AllUsers">Administrator</a></li>
+                <li><a class="nav-item nav-link my-2 my-sm-0 mr-2" asp-controller="Seller" asp-action="ProductsOffered">Seller</a></li>
                 <li><a class="nav-item nav-link my-2 my-sm-0 mr-2" asp-controller="Account" asp-action="CreateUser">Register</a></li>
                 <li><a class="nav-item nav-link my-2 my-sm-0" asp-controller="Account" asp-action="Logout">Sign Out</a></li>
                 <li><a class="nav-item nav-link my-2 my-sm-0" asp-controller="Account" asp-action="Login">Sign In</a></li>
@@ -37,11 +38,8 @@
     <div class="mt-5">
         @RenderBody()
     </div>
-    <footer class="navbar navbar-expand-lg navbar-light bg-light">
+    @*<footer class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            @*<div class="row">
-                <div class="col-1"></div>
-                <div class="col-5">*@
                     
             <ul class="list-group ml-5 pl-5">
                 <li class=" d-flex justify-content-between align-items-center">
@@ -61,11 +59,7 @@
                 </li>
             </ul>
                 </div>
-                @*<div class="col-2"></div>*@
-            @*</div>
-            
-        </div>*@
-    </footer>
+    </footer>*@
     
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/js/dist/dropdown.js"></script>

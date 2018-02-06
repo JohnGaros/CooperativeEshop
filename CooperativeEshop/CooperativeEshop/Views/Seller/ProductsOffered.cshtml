@@ -1,0 +1,42 @@
+﻿@model SellerProductsViewModel
+@{ Layout = "_SellerLayout";}
+
+<div class="card border-light mb-3" style="max-width: 50rem;">
+    <div class="card-header text-center">
+       <h4>All products Currently on Offer</h4>
+    </div>
+    <div class="card-body">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">InventoryItem ID</th>
+                    <th scope="col">Product Name</th>
+                    <th scope="col">Stock</th>
+                    <th scope="col">Base Price</th>
+                    <th scope="col">Status</th>
+                </tr>
+            </thead>
+            @if (Model.InventoryItemRepository.InventoryItems.Count() == 0)
+            {
+                <tr><td colspan="5" class="text-center text-danger"><h4>No Products Offered</h4></td></tr>
+            }
+            else
+            {
+                foreach (InventoryItem item in Model.InventoryItemRepository.InventoryItems)
+                {
+                    <tr>
+                        <td>@item.IneventoryItemID</td>
+                        <td>@item.Product.Name</td>
+                        <td>@item.StockQuantity</td>
+                        <td>@item.ProductPriceComponents.Where(x => x.IneventoryItemID == item.IneventoryItemID).Select(x => x.BasePrice)</td>
+                        <td>
+                            @if (item.GoLive == true) { <span>Live</span>}
+                            else { <span>Pending</span>}
+                        </td>
+                        
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+</div>
