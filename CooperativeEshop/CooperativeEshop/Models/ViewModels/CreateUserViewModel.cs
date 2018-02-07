@@ -1,20 +1,16 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using CooperativeEshop.Core.Domain;
 using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
 
 namespace CooperativeEshop.Models.ViewModels
 {
     public class CreateUserViewModel
     {
         [Required]
-        public string Username { get; set; }
-        [Required]
-        public string Email { get; set; }
+        public AppUser User { get; set; }
         [Required]
         public string Password { get; set; }
-
-        public IdentityRole Role = new IdentityRole
-        {
-            Name = "Customer"
-        };
+        [Required]
+        public IdentityRole Role { get; set; }
     }
 }

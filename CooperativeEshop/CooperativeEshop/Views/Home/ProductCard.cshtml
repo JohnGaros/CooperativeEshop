@@ -1,7 +1,7 @@
 ﻿@model ProductListViewModel
 @{Layout = "_Layout";}
 
-<div class="container-fluid">
+<div class="container-fluid" style="max-width:65rem;">
     <div class="row">
         @if (Model.productRepository.Products.Count() == 0)
         {
@@ -13,7 +13,7 @@
             @foreach (Product p in Model.productRepository.Products)
             {
                 <div class="col-3">
-                    <div class="card bg-light mx-3" style="max-width:15rem;">
+                    <div class="card bg-light mx-3 mt-5" style="max-width:15rem;">
                         <div class=" container-fluid align-content-center mt-3">
                             <img style=" width:100%; display: block;" alt="Card image" src=@p.CoverFilePath>
                         </div>

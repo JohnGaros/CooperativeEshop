@@ -62,29 +62,35 @@ namespace CooperativeEshop.Controllers
         }
         
         [AllowAnonymous]
-        public ViewResult CreateUser()
+        public ViewResult CreateCustomer()
         {
-            //ViewBag.returnUrl = returnUrl;
             return View();
         }
 
         [HttpPost]
         [AllowAnonymous]
-        public async Task<IActionResult> CreateUser(CreateUserViewModel newUser)
+        public async Task<IActionResult> CreateCustomer(CreateUserViewModel newUser)
         {
             if (ModelState.IsValid)
             {
                 AppUser user = new AppUser
                 {
-                    UserName = newUser.Username,
-                    Email = newUser.Email
+                    UserName = newUser.User.UserName,
+                    Email = newUser.User.Email
                 };
-
+                
                 IdentityResult result = await _userManager.CreateAsync(user, newUser.Password);
 
                 if (result.Succeeded)
                 {
-
+                    IdentityResult result1 = await _userManager.AddToRoleAsync(user, "Customer");
+                    if (!result1.Succeeded)
+                    {
+                        foreach(IdentityError error in result1.Errors)
+                        {
+                            ModelState.AddModelError("", error.Description);
+                        }
+                    }
                     return RedirectToAction(nameof(GoHome));
                 }
                 else
@@ -99,6 +105,47 @@ namespace CooperativeEshop.Controllers
             
         }
 
+        [AllowAnonymous]
+        public ViewResult CreateSeller() => View();
+        
+
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> CreateSeller(CreateUserViewModel newUser)
+        {
+            if (ModelState.IsValid)
+            {
+                AppUser user = new AppUser
+                {
+                    UserName = newUser.User.UserName,
+                    Email = newUser.User.Email
+                };
+
+                IdentityResult result = await _userManager.CreateAsync(user, newUser.Password);
+
+                if (result.Succeeded)
+                {
+                    IdentityResult result1 = await _userManager.AddToRoleAsync(user, "Seller");
+                    if (!result1.Succeeded)
+                    {
+                        foreach (IdentityError error in result1.Errors)
+                        {
+                            ModelState.AddModelError("", error.Description);
+                        }
+                    }
+                    return RedirectToAction(nameof(GoHome));
+                }
+                else
+                {
+                    foreach (IdentityError error in result.Errors)
+                    {
+                        ModelState.AddModelError("", error.Description);
+                    }
+                }
+            }
+            return View(newUser);
+
+        }
 
     }
 }

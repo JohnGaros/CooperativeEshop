@@ -2,13 +2,13 @@
 @{ Layout = "_SellerLayout";}
 
 
-<form style="width:20rem;">
+<form style="width:20rem;" asp-controller="Seller" asp-action="ProductNewOffer">
     <fieldset>
         <legend class="mb-3">Offer a Book</legend>
-
+        <input type="hidden" asp-for="Seller"/>
         <div class="form-group">
-            <label for="exampleSelect1">Book Name</label>
-            <select class="form-control" id="exampleSelect1">
+            <label>Book Name</label>
+            <select class="form-control" asp-for="ProductName">
                 @foreach (Product product in Model.ProductRepository.Products)
                 {
                     <option>@product.Name</option>
@@ -16,8 +16,8 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="exampleSelect2">Stock Quantity</label>
-            <select class="form-control" id="exampleSelect2">
+            <label>Stock Quantity</label>
+            <select class="form-control" asp-for="InventoryItem.StockQuantity">
                 @for (int i = 0; i < 100; i++)
                 {
                     <option>@i</option>
@@ -31,7 +31,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text">Euro  </span>
                     </div>
-                    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                    <input asp-for="ProductPriceComponents.BasePrice" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
                     <div class="input-group-append">
                         <span class="input-group-text">.00</span>
                     </div>
@@ -40,5 +40,5 @@
         </div>
 
     </fieldset>
-    <button type="button" class="btn btn-primary btn-lg btn-block mt-3">Offer the Book</button>
+    <button type="submit" class="btn btn-primary btn-lg btn-block mt-3">Offer the Book</button>
 </form>

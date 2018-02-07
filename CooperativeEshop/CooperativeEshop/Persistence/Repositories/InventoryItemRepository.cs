@@ -1,6 +1,7 @@
 ﻿using CooperativeEshop.Core.Domain;
 using CooperativeEshop.Core.Repositories;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace CooperativeEshop.Persistence.Repositories
 {
@@ -13,7 +14,7 @@ namespace CooperativeEshop.Persistence.Repositories
             ctx = context;
         }
 
-        public IQueryable<InventoryItem> InventoryItems => ctx.InventoryItems;
+        public IEnumerable<InventoryItem> InventoryItems => ctx.InventoryItems;
 
         public void UpdateInventoryItem(InventoryItem item)
         {
