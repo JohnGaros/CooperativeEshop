@@ -1,6 +1,7 @@
 ﻿using CooperativeEshop.Core.Repositories;
 using CooperativeEshop.Core.Domain;
 
+
 namespace CooperativeEshop.Models.ViewModels
 {
     public class SellerProductsViewModel
@@ -15,7 +16,9 @@ namespace CooperativeEshop.Models.ViewModels
         public IInventoryItemRepository InventoryItemRepository { get; set; }
 
         public ProductPriceComponents ProductPriceComponents { get; set; }
-        public IPriceComponentRepository PriceComponentRepository { get; set; }
+        //public IPriceComponentRepository PriceComponentRepository { get; set; }
+
+        //public LoginUserViewModel LoginUserViewModel { get; set; }
 
     }
 }

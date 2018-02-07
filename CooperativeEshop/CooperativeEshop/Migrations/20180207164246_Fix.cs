@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace CooperativeEshop.Migrations
 {
-    public partial class AddProduct : Migration
+    public partial class Fix : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

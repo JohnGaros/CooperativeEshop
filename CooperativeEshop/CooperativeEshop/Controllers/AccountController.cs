@@ -147,5 +147,8 @@ namespace CooperativeEshop.Controllers
 
         }
 
+        [AllowAnonymous]
+        public IActionResult AccessDenied() => View();
+
     }
 }

@@ -5,10 +5,10 @@
 <form style="width:20rem;" asp-controller="Seller" asp-action="ProductNewOffer">
     <fieldset>
         <legend class="mb-3">Offer a Book</legend>
-        <input type="hidden" asp-for="Seller"/>
+        <input type="hidden" asp-for=@Model.InventoryItem.Seller.Id/>
         <div class="form-group">
             <label>Book Name</label>
-            <select class="form-control" asp-for="ProductName">
+            <select class="form-control" asp-for=@Model.ProductName>
                 @foreach (Product product in Model.ProductRepository.Products)
                 {
                     <option>@product.Name</option>
@@ -31,7 +31,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text">Euro  </span>
                     </div>
-                    <input asp-for="ProductPriceComponents.BasePrice" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                    <input asp-for=ProductPriceComponents.BasePrice type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
                     <div class="input-group-append">
                         <span class="input-group-text">.00</span>
                     </div>

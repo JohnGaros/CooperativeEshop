@@ -11,10 +11,10 @@ namespace CooperativeEshop.Core.Domain
         public string Name { get; set; }
         public string CoverFilePath { get; set; }
 
-        public ICollection<ProductPriceComponents> SellerProduct { get; set; }
+       
         public ICollection<ProductCategoryClassification> ProductCategoryClassifications { get; set; }
         public ICollection<InventoryItem> InventoryItems { get; set; }
-        public ICollection<CartItem> CartItems { get; set; }
+       
         
     }
 }
