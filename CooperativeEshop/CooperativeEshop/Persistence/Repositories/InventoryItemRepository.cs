@@ -2,6 +2,8 @@
 using CooperativeEshop.Core.Repositories;
 using System.Linq;
 using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace CooperativeEshop.Persistence.Repositories
 {
@@ -21,8 +23,9 @@ namespace CooperativeEshop.Persistence.Repositories
             ctx.Update(item);
             ctx.SaveChanges();
         }
-        public void AddInventoryItem(InventoryItem item)
-        {            
+        public void AddInventoryItem(AppUser Seller, InventoryItem item)
+        {
+            item.UserID = Seller.Id;
             ctx.InventoryItems.Add(item);
             ctx.SaveChanges();
         }
@@ -37,5 +40,21 @@ namespace CooperativeEshop.Persistence.Repositories
             }
         }
 
+        public IEnumerable<InventoryItem> GetSellerItems(AppUser user)
+        {
+            return ctx.InventoryItems.Where(x => x.Seller == user);
+        }
+
+        public bool IsEmpty(IInventoryItemRepository repo) => !repo.InventoryItems.Any();
+
+
+        public decimal GetBasePrice(InventoryItem item)
+        {
+            return ctx.ProductPriceComponents.FirstOrDefault(x => x.InventoryItem == item).BasePrice;
+        }
+
+        public string GetProductName(InventoryItem item) => ctx.InventoryItems
+            .FirstOrDefault(x => x.IneventoryItemID == item.IneventoryItemID).Product.Name;
+        
     }
 }

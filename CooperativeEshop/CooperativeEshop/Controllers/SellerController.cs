@@ -10,6 +10,7 @@ using CooperativeEshop.Core.Repositories;
 
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
+using CooperativeEshop.Persistence.Repositories;
 
 namespace CooperativeEshop.Controllers
 {
@@ -46,17 +47,19 @@ namespace CooperativeEshop.Controllers
         public IActionResult ProductsOffered()
         {
             AppUser seller = _userManager.Users.FirstOrDefault(x => x.UserName == User.Identity.Name);
-            IEnumerable<InventoryItem> SellerInventory = _unitOfWork.InventoryItems.InventoryItems.Where(x => x.Seller == seller);
+            //InventoryItemRepository SellerInventory = _unitOfWork.InventoryItems.InventoryItems.Where(x => x.Seller == seller);
             SellerProductsOfferedViewModel model = new SellerProductsOfferedViewModel
             {
                 Seller = seller,
-                SellerInventoryItems = SellerInventory
+                SellerRepository = _unitOfWork.InventoryItems.GetSellerItems(seller),
+                InventoryItemRepository = _unitOfWork.InventoryItems
             };
             return View(model);
         }
 
         public ViewResult OfferNewProduct() => View(new SellerProductsViewModel
         {
+            Seller = _userManager.Users.FirstOrDefault(x => x.UserName == User.Identity.Name),
             ProductRepository = _unitOfWork.Products
             
         });
@@ -64,15 +67,15 @@ namespace CooperativeEshop.Controllers
         [HttpPost]
         public IActionResult OfferNewProduct(SellerProductsViewModel model)
         {
+            
             InventoryItem item = new InventoryItem
-            {
-               
+            {           
                 Seller = _userManager.Users.FirstOrDefault(x => x.UserName == User.Identity.Name),
                 Product = _unitOfWork.Products.Products.FirstOrDefault(x => x.Name == model.ProductName),
                 StockQuantity = model.InventoryItem.StockQuantity,
                 GoLive = false
             };
-            _unitOfWork.InventoryItems.AddInventoryItem(item);
+            _unitOfWork.InventoryItems.AddInventoryItem(item.Seller, item);
             return RedirectToAction(nameof(ProductsOffered));
         }
     }

@@ -1,5 +1,6 @@
 ﻿using CooperativeEshop.Core.Repositories;
 using CooperativeEshop.Core.Domain;
+using CooperativeEshop.Persistence.Repositories;
 using System.Collections.Generic;
 
 namespace CooperativeEshop.Models.ViewModels
@@ -8,6 +9,7 @@ namespace CooperativeEshop.Models.ViewModels
     {
         public AppUser Seller { get; set; }
         //public IProductRepository ProductRepository { get; set; }
-        public IEnumerable<InventoryItem> SellerInventoryItems { get; set; }
+        public IInventoryItemRepository InventoryItemRepository { get; set; }
+        public IEnumerable<InventoryItem> SellerRepository { get; set; }
     }
 }

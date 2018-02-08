@@ -16,19 +16,19 @@
                     <th scope="col">Status</th>
                 </tr>
             </thead>
-            @if (Model.SellerInventoryItems.Count() == 0)
+            @if (Model.SellerRepository.Count()==0)
             {
                 <tr><td colspan="5" class="text-center text-danger"><h4>No Products Offered</h4></td></tr>
             }
             else
             {
-                foreach (InventoryItem item in Model.SellerInventoryItems)
+                foreach (InventoryItem item in Model.SellerRepository)
                 {
                     <tr>
                         <td>@item.IneventoryItemID</td>
-                        @*<td>@item.Product.Name</td>*@
+                        @*<td>@Model.InventoryItemRepository.GetProductName(item)</td>*@
                         <td>@item.StockQuantity</td>
-                        @*<td>@item.ProductPriceComponents.Where(x => x.IneventoryItemID == item.IneventoryItemID).Select(x => x.BasePrice)</td>*@
+                        @*<td>@Model.InventoryItemRepository.GetBasePrice(item)</td>*@
                         <td>
                             @if (item.GoLive == true) { <span>Live</span>}
                             else { <span>Pending</span>}
