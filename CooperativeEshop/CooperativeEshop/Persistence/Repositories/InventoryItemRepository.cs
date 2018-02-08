@@ -32,7 +32,7 @@ namespace CooperativeEshop.Persistence.Repositories
         public void DeleteInventoryItem(int itemID)
         {
 
-            InventoryItem toBeDeleted = ctx.InventoryItems.FirstOrDefault(p => p.IneventoryItemID == itemID);
+            InventoryItem toBeDeleted = ctx.InventoryItems.FirstOrDefault(p => p.InventoryItemID == itemID);
             if (toBeDeleted != null)
             {
                 ctx.InventoryItems.Remove(toBeDeleted);
@@ -47,14 +47,10 @@ namespace CooperativeEshop.Persistence.Repositories
 
         public bool IsEmpty(IInventoryItemRepository repo) => !repo.InventoryItems.Any();
 
+        public string GetProductName(InventoryItem item) => ctx.InventoryItems.Include(x => x.Product)
+            .FirstOrDefault(x => x.InventoryItemID == item.InventoryItemID).Product.Name;
 
-        public decimal GetBasePrice(InventoryItem item)
-        {
-            return ctx.ProductPriceComponents.FirstOrDefault(x => x.InventoryItem == item).BasePrice;
-        }
-
-        public string GetProductName(InventoryItem item) => ctx.InventoryItems
-            .FirstOrDefault(x => x.IneventoryItemID == item.IneventoryItemID).Product.Name;
-        
+        //public decimal GetBasePrice(InventoryItem item) => ctx.InventoryItems.Include(x => x.ProductPriceComponents)
+        //    .FirstOrDefault(x => x.ProductPriceComponents == item.ProductPriceComponents).ProductPriceComponents.
     }
 }

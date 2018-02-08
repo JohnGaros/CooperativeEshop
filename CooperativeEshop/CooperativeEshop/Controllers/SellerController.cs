@@ -5,7 +5,7 @@ using CooperativeEshop.Models.ViewModels;
 using System.Linq;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
-using System.Collections.Generic;
+using System;
 using CooperativeEshop.Core.Repositories;
 
 using System.ComponentModel.DataAnnotations;
@@ -47,12 +47,14 @@ namespace CooperativeEshop.Controllers
         public IActionResult ProductsOffered()
         {
             AppUser seller = _userManager.Users.FirstOrDefault(x => x.UserName == User.Identity.Name);
-            //InventoryItemRepository SellerInventory = _unitOfWork.InventoryItems.InventoryItems.Where(x => x.Seller == seller);
+            IInventoryItemRepository inventoryItemRepository = _unitOfWork.InventoryItems;
+            IPriceComponentRepository priceComponentRepository = _unitOfWork.PriceComponents;
             SellerProductsOfferedViewModel model = new SellerProductsOfferedViewModel
             {
                 Seller = seller,
-                SellerRepository = _unitOfWork.InventoryItems.GetSellerItems(seller),
-                InventoryItemRepository = _unitOfWork.InventoryItems
+                SellerRepository = inventoryItemRepository.GetSellerItems(seller),
+                InventoryItemRepository = inventoryItemRepository,
+                PriceComponentRepository = priceComponentRepository
             };
             return View(model);
         }
@@ -73,9 +75,25 @@ namespace CooperativeEshop.Controllers
                 Seller = _userManager.Users.FirstOrDefault(x => x.UserName == User.Identity.Name),
                 Product = _unitOfWork.Products.Products.FirstOrDefault(x => x.Name == model.ProductName),
                 StockQuantity = model.InventoryItem.StockQuantity,
-                GoLive = false
+                GoLive = false               
             };
+
+            ProductPriceComponents components = new ProductPriceComponents
+            {
+                InventoryItem = item,
+                FromDate = DateTime.Today,
+                BasePrice = model.BasePrice
+            };
+
             _unitOfWork.InventoryItems.AddInventoryItem(item.Seller, item);
+            _unitOfWork.PriceComponents.AddPriceComponent(components);
+            return RedirectToAction(nameof(ProductsOffered));
+        }
+
+        [HttpPost]
+        public IActionResult DeleteInventoryItem(int IneventoryItemID)
+        {
+            _unitOfWork.InventoryItems.DeleteInventoryItem(IneventoryItemID);
             return RedirectToAction(nameof(ProductsOffered));
         }
     }

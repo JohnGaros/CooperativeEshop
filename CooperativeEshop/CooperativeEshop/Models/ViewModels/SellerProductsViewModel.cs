@@ -16,9 +16,7 @@ namespace CooperativeEshop.Models.ViewModels
         public IInventoryItemRepository InventoryItemRepository { get; set; }
 
         public ProductPriceComponents ProductPriceComponents { get; set; }
-        //public IPriceComponentRepository PriceComponentRepository { get; set; }
-
-        //public LoginUserViewModel LoginUserViewModel { get; set; }
-
+        public decimal BasePrice { get; set; }
+       
     }
 }

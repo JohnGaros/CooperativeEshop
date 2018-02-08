@@ -69,12 +69,12 @@ namespace CooperativeEshop.Persistence
 
             builder.Entity<CartItem>().HasKey(x => x.CartItemID);
             builder.Entity<CartItem>().HasOne(x => x.Cart).WithMany(x => x.CartItems).IsRequired();
-            builder.Entity<CartItem>().HasOne(x => x.InventoryItem).WithMany(x => x.CartItems).IsRequired();
+            builder.Entity<CartItem>().HasOne(x => x.InventoryItem).WithMany(x => x.CartItems).IsRequired().OnDelete(DeleteBehavior.ClientSetNull);
 
             builder.Entity<Order>().HasKey(x => x.OrderID);
             builder.Entity<Order>().HasOne(x => x.Cart).WithMany(x => x.Orders).IsRequired();
 
-            builder.Entity<InventoryItem>().HasKey(x => x.IneventoryItemID);
+            builder.Entity<InventoryItem>().HasKey(x => x.InventoryItemID);
             builder.Entity<InventoryItem>().HasOne(x => x.Seller).WithMany(x => x.InventoryItems).IsRequired();
             builder.Entity<InventoryItem>().HasOne(x => x.Product).WithMany(x => x.InventoryItems).IsRequired();
 

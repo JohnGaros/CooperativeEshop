@@ -13,7 +13,7 @@ namespace CooperativeEshop.Core.Domain
         public int CartID { get; set; }
 
         public InventoryItem InventoryItem { get; set; }
-        public int InventoryItemID { get; set; }
+        public int? InventoryItemID { get; set; }
 
         public int QuantityInCart { get; set; }
         public decimal UnitPrice { get; set; }

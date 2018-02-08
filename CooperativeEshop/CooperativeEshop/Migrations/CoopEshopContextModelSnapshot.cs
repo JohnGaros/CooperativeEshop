@@ -100,7 +100,8 @@ namespace CooperativeEshop.Migrations
 
                     b.Property<DateTime?>("DateRemoved");
 
-                    b.Property<int>("InventoryItemID");
+                    b.Property<int?>("InventoryItemID")
+                        .IsRequired();
 
                     b.Property<int>("QuantityInCart");
 
@@ -169,7 +170,7 @@ namespace CooperativeEshop.Migrations
 
             modelBuilder.Entity("CooperativeEshop.Core.Domain.InventoryItem", b =>
                 {
-                    b.Property<int>("IneventoryItemID")
+                    b.Property<int>("InventoryItemID")
                         .ValueGeneratedOnAdd();
 
                     b.Property<bool>("GoLive");
@@ -183,7 +184,7 @@ namespace CooperativeEshop.Migrations
 
                     b.Property<string>("UserID");
 
-                    b.HasKey("IneventoryItemID");
+                    b.HasKey("InventoryItemID");
 
                     b.HasIndex("ProductID");
 
@@ -303,7 +304,7 @@ namespace CooperativeEshop.Migrations
 
                     b.Property<DateTime>("FromDate");
 
-                    b.Property<int>("IneventoryItemID");
+                    b.Property<int>("InventoryItemID");
 
                     b.Property<decimal>("SalePrice");
 
@@ -313,7 +314,7 @@ namespace CooperativeEshop.Migrations
 
                     b.HasIndex("AppUserId");
 
-                    b.HasIndex("IneventoryItemID");
+                    b.HasIndex("InventoryItemID");
 
                     b.ToTable("ProductPriceComponents");
                 });
@@ -456,8 +457,7 @@ namespace CooperativeEshop.Migrations
 
                     b.HasOne("CooperativeEshop.Core.Domain.InventoryItem", "InventoryItem")
                         .WithMany("CartItems")
-                        .HasForeignKey("InventoryItemID")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("InventoryItemID");
                 });
 
             modelBuilder.Entity("CooperativeEshop.Core.Domain.CommunicationChannel", b =>
@@ -550,7 +550,7 @@ namespace CooperativeEshop.Migrations
 
                     b.HasOne("CooperativeEshop.Core.Domain.InventoryItem", "InventoryItem")
                         .WithMany("ProductPriceComponents")
-                        .HasForeignKey("IneventoryItemID")
+                        .HasForeignKey("InventoryItemID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

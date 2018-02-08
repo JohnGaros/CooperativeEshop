@@ -9,11 +9,12 @@
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th scope="col">InventoryItem ID</th>
+                    <th scope="col">ID</th>
                     <th scope="col">Product Name</th>
                     <th scope="col">Stock Quantity</th>
-                    <th scope="col">Base Price</th>
+                    
                     <th scope="col">Status</th>
+                    <th scope="col">Action</th>
                 </tr>
             </thead>
             @if (Model.SellerRepository.Count()==0)
@@ -24,14 +25,18 @@
             {
                 foreach (InventoryItem item in Model.SellerRepository)
                 {
-                    <tr>
-                        <td>@item.IneventoryItemID</td>
-                        @*<td>@Model.InventoryItemRepository.GetProductName(item)</td>*@
+                    <tr >
+                        <td>@item.InventoryItemID</td>
+                        <td>@Model.InventoryItemRepository.GetProductName(item)</td>
                         <td>@item.StockQuantity</td>
-                        @*<td>@Model.InventoryItemRepository.GetBasePrice(item)</td>*@
+                        
                         <td>
-                            @if (item.GoLive == true) { <span>Live</span>}
-                            else { <span>Pending</span>}
+                            @if (item.GoLive == true) { <span class="text-success">Live</span>}
+                            else { <h5 class="text-info">Pending</h5>}
+                        </td>
+                        <td><form asp-controller="Seller" asp-action="DeleteInventoryItem" asp-route-IneventoryItemID=@item.InventoryItemID>
+                                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                    </form>
                         </td>
                         
                     </tr>

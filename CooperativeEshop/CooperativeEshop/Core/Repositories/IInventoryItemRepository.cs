@@ -15,7 +15,8 @@ namespace CooperativeEshop.Core.Repositories
         //The following are required for the ProductsOffered view
         IEnumerable<InventoryItem> GetSellerItems(AppUser user);
         bool IsEmpty(IInventoryItemRepository repo);
-        decimal GetBasePrice(InventoryItem item);
+        //decimal GetBasePrice(InventoryItem item);
         string GetProductName(InventoryItem item);
+        
     }
 }

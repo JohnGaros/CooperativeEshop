@@ -1,6 +1,8 @@
 ﻿using System.Linq;
 using CooperativeEshop.Core.Domain;
 using CooperativeEshop.Core.Repositories;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
 namespace CooperativeEshop.Persistence.Repositories
 {
@@ -36,5 +38,11 @@ namespace CooperativeEshop.Persistence.Repositories
                 ctx.SaveChanges();
             }           
         }
+        //public  decimal GetBasePrice(ProductPriceComponents priceComponent) => ctx.ProductPriceComponents
+        //    .Include(x => x.InventoryItem).FirstOrDefault(x => x.IneventoryItemID == priceComponent.IneventoryItemID).BasePrice;
+
+        public IEnumerable<decimal> GetBasePrices(ProductPriceComponents component) => ctx.ProductPriceComponents.Include(x => x.InventoryItem)
+            .Where(x => x.InventoryItemID == component.InventoryItemID).Select(x => x.BasePrice);
     }
 }
+  

@@ -6,7 +6,7 @@ namespace CooperativeEshop.Core.Domain
 {
     public class InventoryItem
     {
-        public int IneventoryItemID { get; set; }
+        public int InventoryItemID { get; set; }
 
         public ICollection<ProductPriceComponents> ProductPriceComponents { get; set; }
         public ICollection<CartItem> CartItems { get; set; }
