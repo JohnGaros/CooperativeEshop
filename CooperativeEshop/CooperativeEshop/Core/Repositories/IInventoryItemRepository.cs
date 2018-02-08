@@ -17,6 +17,8 @@ namespace CooperativeEshop.Core.Repositories
         bool IsEmpty(IInventoryItemRepository repo);
         //decimal GetBasePrice(InventoryItem item);
         string GetProductName(InventoryItem item);
-        
+        IQueryable<ProductPriceComponents> ItemPriceComponents(InventoryItem item);
+
+
     }
 }

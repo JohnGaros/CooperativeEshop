@@ -11,6 +11,6 @@ namespace CooperativeEshop.Core.Repositories
         void UpdatePriceComponent(ProductPriceComponents priceComponent);
         void DeletePriceComponent(int PriceComponentID);
 
-        IEnumerable<decimal> GetBasePrices(ProductPriceComponents component);
+        IEnumerable<decimal> GetBasePrices(InventoryItem item);
     }
 }

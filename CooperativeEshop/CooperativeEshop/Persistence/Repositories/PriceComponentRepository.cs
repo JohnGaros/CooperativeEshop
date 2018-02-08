@@ -38,11 +38,15 @@ namespace CooperativeEshop.Persistence.Repositories
                 ctx.SaveChanges();
             }           
         }
-        //public  decimal GetBasePrice(ProductPriceComponents priceComponent) => ctx.ProductPriceComponents
-        //    .Include(x => x.InventoryItem).FirstOrDefault(x => x.IneventoryItemID == priceComponent.IneventoryItemID).BasePrice;
 
-        public IEnumerable<decimal> GetBasePrices(ProductPriceComponents component) => ctx.ProductPriceComponents.Include(x => x.InventoryItem)
-            .Where(x => x.InventoryItemID == component.InventoryItemID).Select(x => x.BasePrice);
+        //public IEnumerable<decimal> GetBasePrices(ProductPriceComponents component) => ctx.ProductPriceComponents.Include(x => x.InventoryItem)
+        //    .Where(x => x.InventoryItemID == component.InventoryItemID).Select(x => x.BasePrice);
+
+        public IEnumerable<decimal> GetBasePrices(InventoryItem item) => ctx.ProductPriceComponents.Include(x => x.InventoryItem)
+            .Where(x => x.InventoryItemID == item.InventoryItemID).Select(x => x.BasePrice);
+
+        //public decimal GetBasePrice(InventoryItem item) => ctx.ProductPriceComponents.Include(x => x.InventoryItem)
+        //    .Where(x => x.InventoryItemID == item.InventoryItemID).Select(x => x.BasePrice);
     }
 }
   

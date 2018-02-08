@@ -50,7 +50,10 @@ namespace CooperativeEshop.Persistence.Repositories
         public string GetProductName(InventoryItem item) => ctx.InventoryItems.Include(x => x.Product)
             .FirstOrDefault(x => x.InventoryItemID == item.InventoryItemID).Product.Name;
 
-        //public decimal GetBasePrice(InventoryItem item) => ctx.InventoryItems.Include(x => x.ProductPriceComponents)
-        //    .FirstOrDefault(x => x.ProductPriceComponents == item.ProductPriceComponents).ProductPriceComponents.
+        public IQueryable<ProductPriceComponents> ItemPriceComponents(InventoryItem item) =>
+            ctx.ProductPriceComponents.Include(x => x.InventoryItem).Where(x => x.InventoryItemID == item.InventoryItemID);
+
+        //public decimal GetBasePrice(InventoryItem item) => ctx.InventoryItems.Include(x => x.ProductPriceComponents).Where(x => x.InventoryItemID == item.InventoryItemID)
+        //    .FirstOrDefault(x => x.ProductPriceComponents == item.ProductPriceComponents).ProductPriceComponents;
     }
 }

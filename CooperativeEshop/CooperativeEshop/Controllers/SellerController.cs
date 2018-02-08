@@ -7,9 +7,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using System;
 using CooperativeEshop.Core.Repositories;
-
-using System.ComponentModel.DataAnnotations;
-using System.Threading.Tasks;
 using CooperativeEshop.Persistence.Repositories;
 
 namespace CooperativeEshop.Controllers
@@ -29,20 +26,6 @@ namespace CooperativeEshop.Controllers
             _roleManager = roleManager;
             _userManager = userManager;
         }
-
-        //public IActionResult ProductsOffered(LoginUserViewModel model)
-        //{
-        //    _seller = _userManager.Users.FirstOrDefault(x => x.Email == model.Email);
-        //    return View(new SellerProductsViewModel
-        //    {
-        //        Seller = _seller,
-        //        ProductRepository = _unitOfWork.Products,
-        //        InventoryItemRepository = _unitOfWork.InventoryItems
-        //    });
-
-        //}
-
-        
 
         public IActionResult ProductsOffered()
         {
@@ -96,5 +79,27 @@ namespace CooperativeEshop.Controllers
             _unitOfWork.InventoryItems.DeleteInventoryItem(IneventoryItemID);
             return RedirectToAction(nameof(ProductsOffered));
         }
+
+        public IActionResult ViewBasePrices()
+        {
+            AppUser seller = _userManager.Users.FirstOrDefault(x => x.UserName == User.Identity.Name);
+            IInventoryItemRepository inventoryItemRepository = _unitOfWork.InventoryItems;
+            IPriceComponentRepository PriceComponentRepository = _unitOfWork.PriceComponents;
+
+            SellerBasePricesViewModel model = new SellerBasePricesViewModel
+            {
+                Seller = seller,
+                SellerRepository = inventoryItemRepository.GetSellerItems(seller),
+                InventoryItemRepository = inventoryItemRepository,
+                PriceComponentRepository = PriceComponentRepository
+            };
+            return View(model);
+        }
+
+        //[HttpPost]
+        //public IActionResult ViewBasePrices()
+        //{
+
+        //}
     }
 }
