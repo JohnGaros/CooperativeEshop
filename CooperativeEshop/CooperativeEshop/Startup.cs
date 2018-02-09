@@ -18,7 +18,7 @@ namespace CooperativeEshop
         public IConfiguration Configuration { get; }
         public Startup(IConfiguration config)
         {
-            Configuration = config;    
+            Configuration = config;
         }
 
         public void ConfigureServices(IServiceCollection services)
@@ -32,15 +32,15 @@ namespace CooperativeEshop
             services.AddTransient<IInventoryItemRepository, InventoryItemRepository>();
             services.AddTransient<IPriceComponentRepository, PriceComponentRepository>();
             services.AddTransient<IUnitOfWork, UnitOfWork>();
-            
+
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddMvc();
         }
 
-        
+
         public void Configure(IApplicationBuilder app)
         {
-            
+
             app.UseStatusCodePages();
             app.UseDeveloperExceptionPage();
             app.UseStaticFiles();
@@ -51,9 +51,13 @@ namespace CooperativeEshop
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
+                routes.MapRoute(
+                    name: "sellerPrice",
+                    template: "{controller=AdminProducts}/{action=GoLive}/{salePrice?}");
+
             });
             //AdminSeedData.EnsurePopulated(app);
         }
-        
+
     }
 }

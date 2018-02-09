@@ -1,0 +1,61 @@
+﻿@model AdminPendingProductsViewModel
+@{ Layout = "_AdministrationLayout";}
+
+<div class="card border-light mb-3" style="max-width: 50rem;">
+    <div class="card-header text-center">
+        <h4>View Pending Offers</h4>
+    </div>
+    <div class="card-body">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Product Name</th>
+                    <th scope="col">Seller</th>
+                    <th scope="col">Base Price</th>
+                    <th scope="col">Sale Price</th>
+                    <th scope="col" class="text-center">Action</th>
+
+                </tr>
+            </thead>
+            @if (Model.InventoryItemRepository.InventoryItems.Count() == 0)
+            {
+                <tr><td colspan="5" class="text-center text-danger"><h4>No Products Offered</h4></td></tr>
+            }
+            else
+            {
+                foreach (AppUser seller in Model.Sellers)
+                {
+
+                    foreach (InventoryItem item in Model.InventoryItemRepository.InventoryItems)
+                    {
+                        
+                        foreach (ProductPriceComponents component in Model.InventoryItemRepository.ItemPriceComponents(item))
+                        {
+                            <tr>
+                                <td>@item.InventoryItemID</td>
+                                <td>@Model.InventoryItemRepository.GetProductName(item)</td>
+                                <td>@seller.UserName</td>
+                                <td>@component.BasePrice</td>
+                                <td colspan="2">
+                                    
+                                    <form asp-controller="AdminProducts" asp-action="GoLive" method="post">
+                                        <input type="hidden" asp-for="InventoryItemID" value="@item.InventoryItemID"/>
+
+                                        <div class="form-group input-group">
+                                            <input asp-for="SalePrice" class="form-control mr-5" type="number" placeholder="Enter Sale Price" size="8">
+                                            <button class="btn btn-success" type="submit">GoLive</button>
+                                            </div>
+                                    </form>
+                                 </td>
+                            </tr>
+
+                        }
+
+                    }
+                }
+
+            }
+        </table>
+    </div>
+</div>

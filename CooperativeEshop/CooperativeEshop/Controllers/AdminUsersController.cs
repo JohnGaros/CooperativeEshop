@@ -89,5 +89,7 @@ namespace CooperativeEshop.Controllers
             return View(nameof(AllSellers));
         }
 
+
+
     }
 }
