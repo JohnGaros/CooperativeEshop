@@ -18,7 +18,7 @@
 
                 </tr>
             </thead>
-            @if (Model.InventoryItemRepository.InventoryItems.Count() == 0)
+            @if (Model.PendingInventoryItems.Count() == 0)
             {
                 <tr><td colspan="5" class="text-center text-danger"><h4>No Products Offered</h4></td></tr>
             }
@@ -27,10 +27,10 @@
                 foreach (AppUser seller in Model.Sellers)
                 {
 
-                    foreach (InventoryItem item in Model.InventoryItemRepository.InventoryItems)
+                    foreach (InventoryItem item in Model.PendingInventoryItems)
                     {
                         
-                        foreach (ProductPriceComponents component in Model.InventoryItemRepository.ItemPriceComponents(item))
+                        foreach (ProductPriceComponents component in item.ProductPriceComponents)
                         {
                             <tr>
                                 <td>@item.InventoryItemID</td>

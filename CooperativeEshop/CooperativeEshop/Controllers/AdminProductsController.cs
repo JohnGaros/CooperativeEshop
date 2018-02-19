@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
 using System;
+using CooperativeEshop.Persistence.Repositories;
 
 namespace CooperativeEshop.Controllers
 {
@@ -64,10 +65,11 @@ namespace CooperativeEshop.Controllers
                     AllSellers.Add(user);
                 }
             }
+            
             AdminPendingProductsViewModel pendingProducts = new AdminPendingProductsViewModel
             {
                 Sellers = AllSellers,
-                InventoryItemRepository = _unitOfWork.InventoryItems,
+                PendingInventoryItems = _unitOfWork.InventoryItems.InventoryItems.Where(x => x.GoLive == false),
                 PriceComponentRepository = _unitOfWork.PriceComponents
             };
             return View(pendingProducts);           

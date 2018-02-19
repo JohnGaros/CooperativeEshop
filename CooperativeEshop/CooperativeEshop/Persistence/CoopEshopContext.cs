@@ -24,6 +24,8 @@ namespace CooperativeEshop.Persistence
         public DbSet<ProductCategory> ProductCategories { get; set; }
         public DbSet<ProductCategoryClassification> ProductCategoryClassifications { get; set; }
         public DbSet<ProductPriceComponents> ProductPriceComponents { get; set; }
+        public DbSet<BasePrice> BasePrices { get; set; }
+        public DbSet<SalePrice> SalePrices { get; set; }
         public DbSet<Cart> Carts { get; set; }
         public DbSet<CartItem> CartItems { get; set; }
         public DbSet<Order> Orders { get; set; }
@@ -33,7 +35,6 @@ namespace CooperativeEshop.Persistence
         protected override void OnModelCreating(ModelBuilder builder)
         {
             
-
             builder.Entity<UserCommunicationChannel>().HasKey(k => new { k.CommChannelID, k.UserID });
             builder.Entity<UserCommunicationChannel>().HasOne(x => x.User).WithMany(x => x.UserCommunicationChannels).HasForeignKey(x => x.UserID).IsRequired();
             builder.Entity<UserCommunicationChannel>().HasOne(x => x.CommChannel).WithMany(x => x.UserCommunicationChannels).HasForeignKey(x => x.CommChannelID).IsRequired();
@@ -62,7 +63,9 @@ namespace CooperativeEshop.Persistence
 
             builder.Entity<ProductPriceComponents>().HasKey(x => x.PriceComponentID);
             builder.Entity<ProductPriceComponents>().HasOne(x => x.InventoryItem).WithMany(x => x.ProductPriceComponents).IsRequired();
-            
+
+            builder.Entity<BasePrice>().HasKey(x => x.PriceComponentID);
+            builder.Entity<SalePrice>().HasKey(x => x.PriceComponentID);
 
             builder.Entity<Cart>().HasKey(x => x.CartID);
             builder.Entity<Cart>().HasOne(x => x.Customer).WithOne(x => x.Cart).IsRequired();

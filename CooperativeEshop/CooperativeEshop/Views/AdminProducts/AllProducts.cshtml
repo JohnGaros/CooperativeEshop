@@ -12,6 +12,7 @@
                 <tr>
                     <th scope="col">Product Name</th>
                     <th scope="col">Cover</th>
+                    <th scope="col">Status</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
@@ -27,7 +28,9 @@
 
                         <td class="align-middle">@product.Name</td>
                         <td><img height="60" width="40" src=@product.CoverFilePath></td>
-                        
+                        <td>
+                            <button type="button"> </button>
+                        </td>
                         <td class="align-middle">
                             <form asp-controller="AdminProducts" asp-action="DeleteProduct" asp-route-ProductID ="@product.ProductID" method="post">
                                 <button type="submit" class="btn btn-sm btn-danger">Delete</button>

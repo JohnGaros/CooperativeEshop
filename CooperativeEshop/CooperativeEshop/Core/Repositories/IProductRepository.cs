@@ -1,6 +1,6 @@
 ﻿
 using System.Collections.Generic;
-using System.Linq;
+using System.Linq;  
 using CooperativeEshop.Core.Domain;
 
 namespace CooperativeEshop.Core.Repositories
@@ -14,6 +14,7 @@ namespace CooperativeEshop.Core.Repositories
         void DeleteProduct(int productId);
 
         int QuantityAtHand(Product product);
+        //bool Live(Product product);
         //decimal MinPrice(Product product);
 
     }

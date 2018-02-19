@@ -9,6 +9,7 @@ namespace CooperativeEshop.Models.ViewModels
     {
         public List<AppUser> Sellers { get; set; }
 
+        public IEnumerable<InventoryItem> PendingInventoryItems { get; set; }
         public IInventoryItemRepository InventoryItemRepository { get; set; }
         public InventoryItem InventoryItem { get; set; }
         public int InventoryItemID { get; set; }
