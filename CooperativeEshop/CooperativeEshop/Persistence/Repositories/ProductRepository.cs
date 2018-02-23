@@ -46,7 +46,8 @@ namespace CooperativeEshop.Persistence.Repositories
             return ProductInventoryItems.Sum(x => x.StockQuantity);
         }
 
-        public bool Live(Product product) => ctx.InventoryItems.Any(x => x.GoLive == true);
+        public bool Live(Product product) => ctx.InventoryItems.Where(x => x.ProductID == product.ProductID).Any(x => x.GoLive == true);
+        public bool Offered(Product product) => ctx.InventoryItems.Where(x => x.ProductID == product.ProductID).Any();
 
         //public decimal MinPrice(Product product)
         //{

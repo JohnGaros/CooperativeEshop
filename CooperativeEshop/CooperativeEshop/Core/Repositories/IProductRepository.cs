@@ -13,8 +13,14 @@ namespace CooperativeEshop.Core.Repositories
         void UpdateProduct(Product product);
         void DeleteProduct(int productId);
 
+        //total stock
         int QuantityAtHand(Product product);
-        //bool Live(Product product);
+
+        //Has Gone Live
+        bool Live(Product product);
+
+        bool Offered(Product product);
+
         //decimal MinPrice(Product product);
 
     }
